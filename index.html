@@ -502,7 +502,7 @@
                     <div class="tab-pane fade" id="poster" role="tabpanel" aria-labelledby="poster-tab">
                         <div class="mb-3 input-with-suggestion">
                             <label for="posterProduct" class="form-label">Produk/Jasa yang Dipromosikan</label>
-                            <input type="text" class="form-control" id="posterProduct" placeholder="Contoh: CITRUK BUNDA">
+                            <input type="text" class="form-control" id="posterProduct" placeholder="Contoh: Kopi Bahagia">
                             <small class="text-muted">Nama produk atau jasa yang ingin Anda promosikan.</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterProduct">
@@ -518,7 +518,7 @@
                         
                         <div class="mb-3 input-with-suggestion">
                             <label for="posterTheme" class="form-label">Tema Poster</label>
-                            <input type="text" class="form-control" id="posterTheme" placeholder="Contoh: Camilan Lezat untuk Semua Usia">
+                            <input type="text" class="form-control" id="posterTheme" placeholder="Contoh: Petualangan Tanpa Batas">
                             <small class="text-muted">Tema atau konsep utama untuk poster Anda.</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterTheme">
@@ -559,7 +559,7 @@
                         
                         <div class="mb-3 input-with-suggestion">
                             <label for="posterText" class="form-label">Teks Promosi (Opsional)</label>
-                            <input type="text" class="form-control" id="posterText" placeholder="Contoh: RENYAH DAN GURIH!">
+                            <input type="text" class="form-control" id="posterText" placeholder="Contoh: Rasakan Perbedaannya, Dapatkan Sekarang!">
                             <small class="text-muted">Teks singkat yang ingin ditampilkan di poster. Jika kosong, akan dibuatkan otomatis.</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterText">
@@ -914,39 +914,41 @@ Each prompt must include all the elements from the advanced prompt structure and
                 'promo': 'promotions with a focus on discounts and special offers'
             };
             
-            // Teks promosi default untuk AI (jika user tidak mengisi teks promosi), juga dalam Bahasa Inggris untuk instruksi ke Gemini
-            const defaultPromotionalText = `Special promo for ${product}!`; 
-            const finalPromotionalText = text || defaultPromotionalText; // Gunakan input user, atau default English jika kosong
+            // Tentukan teks promosi akhir. Jika input kosong, Gemini akan diminta untuk membuat.
+            const finalPromotionalText = text; // Simpan teks asli dari user
             
             return `#ROLE
-You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who specializes in creating hyper-realistic, professional advertising posters for promotional content, specifically for generating eye-catching commercial posters similar to Indonesian food and service advertisements.
+You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who specializes in creating hyper-realistic, professional advertising posters for promotional content, specifically for generating eye-catching commercial posters similar to high-end Indonesian food and service advertisements.
 
 #SPECIALIZATION
 You are an expert in creating visually striking promotional posters with clear product focus, compelling typography, and commercial appeal. You understand how to design posters that attract attention and communicate promotional messages effectively.
 
 #GOAL
-Create a comprehensive prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The poster should be in the category of ${category} (${categoryDescriptions[category]}) and have a ${styleDescriptions[style]} visual style.
+Create a comprehensive prompt for generating a professional advertising poster for the product "${product}" with the theme "${theme}". The poster should be in the category of ${category} (${categoryDescriptions[category]}) and have a ${styleDescriptions[style]} visual style.
 
 #PROMPT STRUCTURE MUST INCLUDE:
-Product focus: Clear visual emphasis on the product "${product}" as the main subject
-Theme integration: Visual elements that represent the theme "${theme}"
-Typography: Bold, clear text. The main promotional message "${finalPromotionalText}" should be prominently displayed.
+Product focus: Clear visual emphasis on the product "${product}" as the main visual subject, positioned as the star of the poster.
+Theme integration: Visual elements that represent the theme "${theme}" as an atmospheric or conceptual backdrop.
+Typography Hierarchy:
+    - The product name, "${product}", must be the **absolute largest and most dominant text element** on the poster, serving as the main headline. It should be bold and centered or strategically placed for maximum impact.
+    - The promotional text, "${finalPromotionalText}", should be a clear, concise, and eye-catching call-to-action or slogan, in a **secondary size** that is highly visible but clearly smaller than the product name.
+    - The theme, "${theme}", should be present as a supportive tagline or descriptive phrase, in a smaller, elegant font, perhaps at the top or bottom of the poster.
 Visual style: ${styleDescriptions[style]}
-Color scheme: Harmonious color palette that enhances the product appeal
-Composition: Balanced layout with the product as the focal point
-Lighting: Professional commercial lighting that makes the product look appealing
-Background: Complementary background that doesn't distract from the product
-Additional elements: Supporting visual elements that enhance the theme and category
-Text elements: Crucially, include the exact original Indonesian product name "${product}", theme "${theme}", and promotional text "${text}" (if provided) directly on the poster. If promotional text is empty, generate an appropriate Indonesian promotional text.
-Output specs: High resolution, commercial quality, suitable for social media and print advertising
+Color scheme: Harmonious color palette that enhances the product appeal, with vibrant colors for the "colorful" style, or muted tones for "minimalist", etc.
+Composition: Balanced and dynamic layout, with the product name and the product itself being the immediate focal points.
+Lighting: Professional commercial studio lighting that highlights textures and makes the product look irresistibly appealing.
+Background: A complementary background that supports the theme without distracting from the product or its name.
+Additional elements: Any supporting visual elements that enhance the theme and category (e.g., coffee beans for coffee, abstract lines for adventure).
+Text elements: Critically important: Ensure the **exact original Indonesian text** for the product name ("${product}"), the theme ("${theme}"), and the promotional text ("${finalPromotionalText}") is rendered directly as visible text on the poster. **DO NOT TRANSLATE THESE TEXTS.** If the promotional text input ("${finalPromotionalText}") is empty, then generate an appropriate, concise, and engaging Indonesian promotional text for the poster.
+Output specs: High resolution, commercial quality, suitable for social media and large-scale print advertising, ensuring text is crisp and clear.
 
 #RESPONSE STYLE
 Write in dense paragraph form (no bullet points) so it's copy-friendly.
-Include specific details about the product placement, typography, and visual elements.
-Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster.
+Include specific details about the product placement, explicit typography hierarchy (product name largest, then promotional text, then theme/tagline), and visual elements.
+Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster without translation.
 
 #TASK
-Create a detailed prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster suitable for promotional purposes. Include specific visual elements, design principles, and ensure the original Indonesian text for product name ("${product}"), theme ("${theme}"), and promotional text ("${text}") is clearly instructed to be placed on the poster. If "${text}" is empty, generate a suitable Indonesian promotional text for the poster.
+Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt must guide an AI image generator to create a compelling commercial poster, ensuring the **product name ("${product}") is the largest and most prominent text**. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.
 `;
         }
 
