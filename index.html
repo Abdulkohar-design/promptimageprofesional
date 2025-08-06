@@ -361,14 +361,17 @@
             font-size: 0.9rem;
             color: var(--dark-color);
             display: none; /* Sembunyikan secara default */
+            flex-wrap: wrap; /* Izinkan saran membungkus jika terlalu panjang */
+            gap: 0.5rem; /* Jarak antar saran jika ada banyak */
         }
         .suggestion-area.active {
             display: flex;
         }
         .suggestion-text {
             flex-grow: 1;
-            margin-right: 1rem;
+            /* margin-right: 1rem; */ /* Hapus jika gap sudah menangani */
             font-style: italic;
+            word-break: break-word; /* Pastikan teks panjang tidak overflow */
         }
         .btn-suggest-ai, .btn-use-suggestion {
             white-space: nowrap;
@@ -948,7 +951,7 @@ Include specific details about the product placement, explicit typography hierar
 Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster without translation.
 
 #TASK
-Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt must guide an AI image generator to create a compelling commercial poster, ensuring the **product name ("${product}") is the largest and most prominent text**. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.
+Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster, ensuring the **product name ("${product}") is the largest and most prominent text**. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.
 `;
         }
 
@@ -973,19 +976,19 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
             let promptForSuggestion = '';
             switch (targetId) {
                 case 'subject':
-                    promptForSuggestion = 'Berikan satu contoh subjek yang menarik untuk dihasilkan oleh generator gambar AI photorealistic. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
+                    promptForSuggestion = `Berikan tiga ide subjek fotorealistik yang menarik dan bervariasi untuk dihasilkan oleh generator gambar AI, mencerminkan gaya majalah, sinematik, atau dokumenter (misalnya, gaya Netflix, K-Pop, National Geographic). Pisahkan setiap ide dengan tanda koma. Cukup berikan ide-ide subjeknya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'negativePrompt':
-                    promptForSuggestion = 'Berikan satu contoh keyword negatif yang umum digunakan untuk prompt AI image generation. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
+                    promptForSuggestion = `Berikan daftar lima keyword negatif lanjutan yang umum digunakan untuk prompt AI image generation guna meningkatkan kualitas gambar, seperti kesalahan anatomi, distorsi, artefak, atau elemen yang tidak diinginkan. Pisahkan setiap keyword dengan tanda koma. Cukup berikan keywordnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterProduct':
-                    promptForSuggestion = 'Berikan satu contoh nama produk atau jasa untuk poster promosi. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
+                    promptForSuggestion = `Berikan tiga contoh nama produk atau jasa yang menarik dan bervariasi (misalnya, makanan, minuman, layanan, teknologi, acara) yang cocok untuk poster promosi yang eye-catching. Pisahkan setiap nama dengan tanda koma. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterTheme':
-                    promptForSuggestion = 'Berikan satu contoh tema poster promosi yang menarik. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
+                    promptForSuggestion = `Berikan tiga ide tema poster promosi yang inovatif dan menarik secara visual untuk berbagai produk/jasa. Pisahkan setiap ide dengan tanda koma. Cukup berikan ide-ide temanya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterText':
-                    promptForSuggestion = 'Berikan satu contoh teks promosi singkat dan menarik untuk poster. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
+                    promptForSuggestion = `Berikan tiga contoh teks promosi singkat, lugas, dan menarik untuk poster iklan. Pisahkan setiap contoh dengan tanda koma. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 default:
                     showToast('Target saran tidak dikenal.', 'error');
@@ -995,13 +998,37 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
 
             try {
                 const suggestion = await callGeminiAPI(apiKey, promptForSuggestion);
-                suggestionTextElem.textContent = suggestion.trim();
-                suggestionArea.classList.add('active');
-                useButton.style.display = 'inline-block';
+                // Pisahkan saran menjadi array jika ada beberapa, lalu tampilkan yang pertama
+                const suggestionsArray = suggestion.split(',').map(s => s.trim()).filter(s => s.length > 0);
+                if (suggestionsArray.length > 0) {
+                    suggestionTextElem.innerHTML = ''; // Kosongkan dulu
+                    suggestionsArray.forEach(s => {
+                        const span = document.createElement('span');
+                        span.textContent = s;
+                        span.style.cursor = 'pointer';
+                        span.style.padding = '0.2rem 0.5rem';
+                        span.style.backgroundColor = '#bbdefb'; // Warna latar belakang chip saran
+                        span.style.borderRadius = '5px';
+                        span.style.marginRight = '0.5rem';
+                        span.style.marginBottom = '0.5rem';
+                        span.addEventListener('click', () => {
+                            document.getElementById(targetId).value = s;
+                            clearAISuggestion(targetId);
+                        });
+                        suggestionTextElem.appendChild(span);
+                    });
+                    
+                    suggestionArea.classList.add('active');
+                    useButton.style.display = 'none'; // Sembunyikan tombol 'Gunakan' jika ada multiple choice
+                } else {
+                    suggestionTextElem.textContent = 'Tidak ada saran yang ditemukan.';
+                    suggestionArea.classList.add('active');
+                    useButton.style.display = 'none';
+                }
                 showToast('Saran AI berhasil didapatkan!', 'success');
             } catch (error) {
                 console.error('Error fetching AI suggestion:', error);
-                showToast('Gagal mendapatkan saran AI. Pastikan kunci API Anda benar.', 'error');
+                showToast('Gagal mendapatkan saran AI. Pastikan kunci API Anda benar dan coba lagi.', 'error');
             } finally {
                 loadingSpinner.style.display = 'none';
             }
@@ -1011,7 +1038,7 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
             const suggestionArea = document.getElementById(`suggestion-${targetId}`);
             if (suggestionArea) {
                 suggestionArea.classList.remove('active');
-                suggestionArea.querySelector('.suggestion-text').textContent = '';
+                suggestionArea.querySelector('.suggestion-text').innerHTML = ''; // Gunakan innerHTML karena mungkin ada span
                 suggestionArea.querySelector('.btn-use-suggestion').style.display = 'none';
                 suggestionArea.querySelector('.suggestion-loading').style.display = 'none';
             }
