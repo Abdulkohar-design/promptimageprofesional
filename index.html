@@ -388,6 +388,14 @@
                             <input type="text" class="form-control" id="subject" placeholder="Contoh: wanita berpakaian tradisional di sawah">
                             <small class="text-muted">Jelaskan subjek atau objek yang ingin Anda hasilkan gambarnya.</small>
                         </div>
+
+                        <!-- Fitur Baru: Prompt Negatif -->
+                        <div class="mb-3">
+                            <label for="negativePrompt" class="form-label">Prompt Negatif (Opsional)</label>
+                            <textarea class="form-control" id="negativePrompt" rows="3" placeholder="Contoh: teks, tanda air, buram, cacat"></textarea>
+                            <small class="text-muted">Jelaskan hal-hal yang TIDAK ingin Anda lihat dalam gambar yang dihasilkan (misalnya, 'teks', 'tanda air', 'cacat').</small>
+                        </div>
+                        <!-- Akhir Fitur Baru -->
                         
                         <div class="mb-3">
                             <label class="form-label">Gaya Visual</label>
@@ -613,6 +621,7 @@
         
         function generateSingleImagePrompt(apiKey) {
             const subject = document.getElementById('subject').value.trim();
+            const negativePrompt = document.getElementById('negativePrompt').value.trim(); // Dapatkan nilai prompt negatif
             const promptCount = document.getElementById('promptCount').value;
             const activeStyle = document.querySelector('.specialization-chip.active').dataset.style;
             
@@ -626,8 +635,8 @@
             document.getElementById('loadingIndicator').style.display = 'block';
             document.getElementById('resultContainer').style.display = 'none';
             
-            // Prepare the prompt for Gemini (this prompt will be in English)
-            const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount);
+            // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
+            const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount, negativePrompt); // Teruskan prompt negatif
             
             // Call Gemini API
             callGeminiAPI(apiKey, geminiPrompt)
@@ -665,7 +674,7 @@
             document.getElementById('loadingIndicator').style.display = 'block';
             document.getElementById('resultContainer').style.display = 'none';
             
-            // Prepare the prompt for Gemini (this prompt will be in English)
+            // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
             const geminiPrompt = buildPosterPrompt(posterProduct, posterTheme, posterText, posterStyle, selectedCategory);
             
             // Call Gemini API
@@ -682,9 +691,9 @@
                 });
         }
         
-        // This function builds the prompt for Gemini, it MUST be in English for Gemini to respond in English
-        function buildGeminiPrompt(subject, style, count) {
-            return `#ROLE
+        // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
+        function buildGeminiPrompt(subject, style, count, negativePrompt) {
+            let prompt = `#ROLE
 You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who unlocks hyper-realistic, Vogue-worthy, professional magazine imagery, specifically for generating the most realistic, professional studio and magazine style creative prompts in the world that create text to AI images in tools like Midjourney, Freepik, Whisk, Google Gemini, Dreamina, Stable Diffusion, Leonardo AI and other AI Image Generator tools.
 
 #SPECIALIZATION
@@ -755,11 +764,16 @@ Create ${count} ready-to-use prompts for the following subject: ${subject}
 Each prompt should be in the style of ${style} (use the appropriate hidden keywords and tokens for this style).
 Each prompt must include all the elements from the advanced prompt structure and use hidden keywords and tokens.
 `;
+            // Tambahkan bagian prompt negatif jika ada isinya
+            if (negativePrompt) {
+                prompt += `\n#NEGATIVE_PROMPT\nAvoid generating the following in the image: ${negativePrompt}. Ensure no watermarks, text, blurry elements, or deformities are present.`;
+            }
+            return prompt;
         }
         
-        // This function builds the prompt for Gemini, it MUST be in English for Gemini to respond in English
+        // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
         function buildPosterPrompt(product, theme, text, style, category) {
-            // Descriptions for AI, must be in English
+            // Deskripsi untuk AI, harus dalam Bahasa Inggris
             const styleDescriptions = {
                 'colorful': 'colorful and attractive with high contrast',
                 'minimalist': 'minimalist and elegant with ample negative space',
@@ -768,7 +782,7 @@ Each prompt must include all the elements from the advanced prompt structure and
                 'natural': 'natural and organic with nature elements and earthy colors'
             };
             
-            // Descriptions for AI, must be in English
+            // Deskripsi untuk AI, harus dalam Bahasa Inggris
             const categoryDescriptions = {
                 'makanan': 'food with a focus on texture and freshness',
                 'minuman': 'drinks with a focus on freshness and presentation',
@@ -778,7 +792,7 @@ Each prompt must include all the elements from the advanced prompt structure and
                 'promo': 'promotions with a focus on discounts and special offers'
             };
             
-            // Default promotional text for AI, changed to English
+            // Teks promosi default untuk AI, juga dalam Bahasa Inggris
             const promotionalText = text || `Special promo for ${product}!`; 
             
             return `#ROLE
@@ -848,10 +862,10 @@ Create a detailed prompt for generating a professional advertising poster for "$
             
             if (type === 'single') {
                 // Split the response into individual prompts
-                // Assuming Gemini's response will use "Prompt 1:", "Prompt 2:", etc.
+                // Asumsi respons Gemini akan menggunakan "Prompt 1:", "Prompt 2:", dll.
                 const prompts = response.split(/Prompt \d+:/).filter(prompt => prompt.trim() !== '');
                 
-                // Create a result box for each prompt
+                // Buat kotak hasil untuk setiap prompt
                 prompts.forEach((prompt, index) => {
                     const promptNumber = index + 1;
                     const resultBox = document.createElement('div');
@@ -863,12 +877,12 @@ Create a detailed prompt for generating a professional advertising poster for "$
                     
                     const resultTitle = document.createElement('div');
                     resultTitle.className = 'result-title';
-                    // UI text remains Indonesian
+                    // Teks UI tetap Bahasa Indonesia
                     resultTitle.innerHTML = `<i class="fas fa-file-alt me-2"></i> Prompt ${promptNumber} - Gaya ${getStyleName(style)}`;
                     
                     const copyButton = document.createElement('button');
                     copyButton.className = 'btn btn-sm btn-copy';
-                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // UI text remains Indonesian
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // Teks UI tetap Bahasa Indonesia
                     copyButton.addEventListener('click', () => copyToClipboard(prompt.trim()));
                     
                     resultHeader.appendChild(resultTitle);
@@ -881,7 +895,7 @@ Create a detailed prompt for generating a professional advertising poster for "$
                     resultContent.appendChild(promptContainer);
                 });
             } else if (type === 'poster') {
-                // For poster, we'll create a single result box
+                // Untuk poster, kita akan membuat satu kotak hasil
                 const resultBox = document.createElement('div');
                 resultBox.className = 'result-box';
                 resultBox.textContent = response.trim();
@@ -891,12 +905,12 @@ Create a detailed prompt for generating a professional advertising poster for "$
                 
                 const resultTitle = document.createElement('div');
                 resultTitle.className = 'result-title';
-                // UI text remains Indonesian
+                // Teks UI tetap Bahasa Indonesia
                 resultTitle.innerHTML = `<i class="fas fa-ad me-2"></i> Prompt untuk Poster Promosi`;
                 
                 const copyButton = document.createElement('button');
                 copyButton.className = 'btn btn-sm btn-copy';
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // UI text remains Indonesian
+                copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // Teks UI tetap Bahasa Indonesia
                 copyButton.addEventListener('click', () => copyToClipboard(response.trim()));
                 
                 resultHeader.appendChild(resultTitle);
@@ -909,16 +923,16 @@ Create a detailed prompt for generating a professional advertising poster for "$
                 resultContent.appendChild(promptContainer);
             }
             
-            // Show the result container
+            // Tampilkan container hasil
             resultContainer.style.display = 'block';
             
-            // Scroll to results
+            // Gulir ke hasil
             resultContainer.scrollIntoView({ behavior: 'smooth' });
             
-            showToast('Prompt berhasil dihasilkan!', 'success'); // UI text remains Indonesian
+            showToast('Prompt berhasil dihasilkan!', 'success'); // Teks UI tetap Bahasa Indonesia
         }
         
-        // Style names are generally English terms, so these can stay as is
+        // Nama gaya umumnya adalah istilah Bahasa Inggris, jadi ini bisa tetap seperti adanya
         function getStyleName(style) {
             const styleNames = {
                 'magazine': 'Magazine',
@@ -934,9 +948,9 @@ Create a detailed prompt for generating a professional advertising poster for "$
         
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast('Prompt berhasil disalin!', 'success'); // UI text remains Indonesian
+                showToast('Prompt berhasil disalin!', 'success'); // Teks UI tetap Bahasa Indonesia
             }).catch(err => {
-                showToast('Gagal menyalin prompt. Silakan salin secara manual.', 'error'); // UI text remains Indonesian
+                showToast('Gagal menyalin prompt. Silakan salin secara manual.', 'error'); // Teks UI tetap Bahasa Indonesia
             });
         }
         
