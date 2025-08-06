@@ -356,7 +356,7 @@
             border: 1px solid #90caf9; /* Blue border */
             border-radius: 8px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Mengatur item dari kiri */
             align-items: center;
             font-size: 0.9rem;
             color: var(--dark-color);
@@ -372,6 +372,20 @@
             /* margin-right: 1rem; */ /* Hapus jika gap sudah menangani */
             font-style: italic;
             word-break: break-word; /* Pastikan teks panjang tidak overflow */
+            line-height: 1.4; /* Meningkatkan keterbacaan */
+            font-style: normal; /* Normal font style for generated text */
+            color: var(--primary-color); /* Warna teks saran */
+        }
+        .suggestion-text span { /* Gaya untuk chip saran individual */
+            display: inline-block;
+            background-color: #bbdefb; /* Latar belakang chip */
+            border-radius: 5px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .suggestion-text span:hover {
+            background-color: #90caf9; /* Hover effect */
         }
         .btn-suggest-ai, .btn-use-suggestion {
             white-space: nowrap;
@@ -442,7 +456,8 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-subject">
                                 <span class="suggestion-text"></span>
-                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="subject"><i class="fas fa-check me-1"></i> Gunakan</button>
+                                <!-- Tombol 'Gunakan' disembunyikan jika ada multiple choice, tapi jaga jika nanti Gemini hanya beri 1 saran -->
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="subject" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
@@ -458,7 +473,7 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-negativePrompt">
                                 <span class="suggestion-text"></span>
-                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="negativePrompt"><i class="fas fa-check me-1"></i> Gunakan</button>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="negativePrompt" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
@@ -514,7 +529,7 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterProduct">
                                 <span class="suggestion-text"></span>
-                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterProduct"><i class="fas fa-check me-1"></i> Gunakan</button>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterProduct" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
@@ -530,7 +545,7 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterTheme">
                                 <span class="suggestion-text"></span>
-                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterTheme"><i class="fas fa-check me-1"></i> Gunakan</button>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterTheme" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
@@ -571,7 +586,7 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterText">
                                 <span class="suggestion-text"></span>
-                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterText"><i class="fas fa-check me-1"></i> Gunakan</button>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterText" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
@@ -706,16 +721,7 @@
                 });
             });
 
-            const useSuggestionButtons = document.querySelectorAll('.btn-use-suggestion');
-            useSuggestionButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.dataset.target;
-                    const suggestionText = document.querySelector(`#suggestion-${targetId} .suggestion-text`).textContent;
-                    document.getElementById(targetId).value = suggestionText;
-                    clearAISuggestion(targetId);
-                });
-            });
-
+            // "Gunakan" button is now dynamic within the suggestion-area, so its listener is set there
             // Clear suggestion when user types
             const inputFieldsWithSuggestions = document.querySelectorAll('.input-with-suggestion input, .input-with-suggestion textarea');
             inputFieldsWithSuggestions.forEach(input => {
@@ -969,26 +975,26 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
             const loadingSpinner = suggestionArea.querySelector('.suggestion-loading');
 
             suggestionArea.classList.remove('active');
-            suggestionTextElem.textContent = '';
-            useButton.style.display = 'none';
+            suggestionTextElem.innerHTML = ''; // Gunakan innerHTML karena akan ada banyak span
+            useButton.style.display = 'none'; // Tombol 'Gunakan' disembunyikan untuk multiple choices
             loadingSpinner.style.display = 'block';
 
             let promptForSuggestion = '';
             switch (targetId) {
                 case 'subject':
-                    promptForSuggestion = `Berikan tiga ide subjek fotorealistik yang menarik dan bervariasi untuk dihasilkan oleh generator gambar AI, mencerminkan gaya majalah, sinematik, atau dokumenter (misalnya, gaya Netflix, K-Pop, National Geographic). Pisahkan setiap ide dengan tanda koma. Cukup berikan ide-ide subjeknya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
+                    promptForSuggestion = `Berikan tiga hingga lima ide subjek yang sangat fotorealistik dan menarik untuk gambar tunggal bergaya editorial/majalah/sinematik, cocok untuk AI image generator. Setiap ide harus lengkap, spesifik, dan menggambarkan adegan atau objek dengan jelas. Fokus pada subjek yang berpotensi memiliki dampak visual tinggi. Berikan ide-ide ini dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'negativePrompt':
-                    promptForSuggestion = `Berikan daftar lima keyword negatif lanjutan yang umum digunakan untuk prompt AI image generation guna meningkatkan kualitas gambar, seperti kesalahan anatomi, distorsi, artefak, atau elemen yang tidak diinginkan. Pisahkan setiap keyword dengan tanda koma. Cukup berikan keywordnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
+                    promptForSuggestion = `Berikan daftar lima hingga tujuh kata kunci negatif yang paling efektif dan umum digunakan dalam prompt AI image generation untuk secara spesifik menghindari cacat seperti anatomi yang salah, teks yang tidak diinginkan, tanda air, buram, distorsi, artefak, kelebihan jari, atau kualitas rendah secara umum. Berikan hanya daftar kata kunci tersebut dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterProduct':
-                    promptForSuggestion = `Berikan tiga contoh nama produk atau jasa yang menarik dan bervariasi (misalnya, makanan, minuman, layanan, teknologi, acara) yang cocok untuk poster promosi yang eye-catching. Pisahkan setiap nama dengan tanda koma. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
+                    promptForSuggestion = `Berikan tiga hingga lima nama produk atau jasa yang kreatif, berkesan, dan cocok untuk poster promosi yang eye-catching, dari berbagai kategori seperti makanan, minuman, teknologi, fashion, atau layanan. Nama-nama ini harus menarik dan mudah diingat. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterTheme':
-                    promptForSuggestion = `Berikan tiga ide tema poster promosi yang inovatif dan menarik secara visual untuk berbagai produk/jasa. Pisahkan setiap ide dengan tanda koma. Cukup berikan ide-ide temanya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
+                    promptForSuggestion = `Berikan tiga hingga lima ide tema poster promosi yang inovatif, berdaya jual tinggi, dan menarik secara visual untuk berbagai produk/jasa. Tema harus menggambarkan konsep atau suasana, bukan hanya deskripsi langsung, dan cocok untuk AI image generation. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 case 'posterText':
-                    promptForSuggestion = `Berikan tiga contoh teks promosi singkat, lugas, dan menarik untuk poster iklan. Pisahkan setiap contoh dengan tanda koma. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan atau pendahuluan.`;
+                    promptForSuggestion = `Berikan tiga hingga lima contoh slogan atau kalimat promosi singkat, lugas, persuasif, dan sangat menarik untuk poster iklan komersial. Kalimat-kalimat ini harus segera menarik perhatian dan mendorong tindakan pembeli. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
                     break;
                 default:
                     showToast('Target saran tidak dikenal.', 'error');
@@ -998,19 +1004,14 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
 
             try {
                 const suggestion = await callGeminiAPI(apiKey, promptForSuggestion);
-                // Pisahkan saran menjadi array jika ada beberapa, lalu tampilkan yang pertama
+                // Pisahkan saran menjadi array jika ada beberapa, lalu tampilkan sebagai chip
                 const suggestionsArray = suggestion.split(',').map(s => s.trim()).filter(s => s.length > 0);
+                
                 if (suggestionsArray.length > 0) {
                     suggestionTextElem.innerHTML = ''; // Kosongkan dulu
                     suggestionsArray.forEach(s => {
                         const span = document.createElement('span');
                         span.textContent = s;
-                        span.style.cursor = 'pointer';
-                        span.style.padding = '0.2rem 0.5rem';
-                        span.style.backgroundColor = '#bbdefb'; // Warna latar belakang chip saran
-                        span.style.borderRadius = '5px';
-                        span.style.marginRight = '0.5rem';
-                        span.style.marginBottom = '0.5rem';
                         span.addEventListener('click', () => {
                             document.getElementById(targetId).value = s;
                             clearAISuggestion(targetId);
@@ -1019,11 +1020,9 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
                     });
                     
                     suggestionArea.classList.add('active');
-                    useButton.style.display = 'none'; // Sembunyikan tombol 'Gunakan' jika ada multiple choice
                 } else {
                     suggestionTextElem.textContent = 'Tidak ada saran yang ditemukan.';
                     suggestionArea.classList.add('active');
-                    useButton.style.display = 'none';
                 }
                 showToast('Saran AI berhasil didapatkan!', 'success');
             } catch (error) {
