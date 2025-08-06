@@ -342,7 +342,12 @@
         /* Gaya untuk Fitur Saran AI */
         .input-with-suggestion {
             position: relative;
-            margin-bottom: 1rem; /* Tambahkan ruang bawah */
+            margin-bottom: 1.5rem; /* Tambahkan ruang bawah untuk area saran */
+        }
+        .suggestion-trigger {
+            display: flex;
+            justify-content: flex-end; /* Pindahkan tombol ke kanan */
+            margin-top: 0.5rem;
         }
         .suggestion-area {
             margin-top: 0.5rem;
@@ -427,7 +432,7 @@
                             <label for="subject" class="form-label">Subjek yang Diinginkan</label>
                             <input type="text" class="form-control" id="subject" placeholder="Contoh: wanita berpakaian tradisional di sawah">
                             <small class="text-muted">Jelaskan subjek atau objek yang ingin Anda hasilkan gambarnya.</small>
-                            <div class="d-flex justify-content-end mt-2">
+                            <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="subject">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
                                 </button>
@@ -443,7 +448,7 @@
                             <label for="negativePrompt" class="form-label">Prompt Negatif (Opsional)</label>
                             <textarea class="form-control" id="negativePrompt" rows="3" placeholder="Contoh: teks, tanda air, buram, cacat"></textarea>
                             <small class="text-muted">Jelaskan hal-hal yang TIDAK ingin Anda lihat dalam gambar yang dihasilkan (misalnya, 'teks', 'tanda air', 'cacat').</small>
-                            <div class="d-flex justify-content-end mt-2">
+                            <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="negativePrompt">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
                                 </button>
@@ -499,7 +504,7 @@
                             <label for="posterProduct" class="form-label">Produk/Jasa yang Dipromosikan</label>
                             <input type="text" class="form-control" id="posterProduct" placeholder="Contoh: CITRUK BUNDA">
                             <small class="text-muted">Nama produk atau jasa yang ingin Anda promosikan.</small>
-                            <div class="d-flex justify-content-end mt-2">
+                            <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterProduct">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
                                 </button>
@@ -515,7 +520,7 @@
                             <label for="posterTheme" class="form-label">Tema Poster</label>
                             <input type="text" class="form-control" id="posterTheme" placeholder="Contoh: Camilan Lezat untuk Semua Usia">
                             <small class="text-muted">Tema atau konsep utama untuk poster Anda.</small>
-                            <div class="d-flex justify-content-end mt-2">
+                            <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterTheme">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
                                 </button>
@@ -556,7 +561,7 @@
                             <label for="posterText" class="form-label">Teks Promosi (Opsional)</label>
                             <input type="text" class="form-control" id="posterText" placeholder="Contoh: RENYAH DAN GURIH!">
                             <small class="text-muted">Teks singkat yang ingin ditampilkan di poster. Jika kosong, akan dibuatkan otomatis.</small>
-                            <div class="d-flex justify-content-end mt-2">
+                            <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterText">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
                                 </button>
@@ -909,8 +914,9 @@ Each prompt must include all the elements from the advanced prompt structure and
                 'promo': 'promotions with a focus on discounts and special offers'
             };
             
-            // Teks promosi default untuk AI, juga dalam Bahasa Inggris
-            const promotionalText = text || `Special promo for ${product}!`; 
+            // Teks promosi default untuk AI (jika user tidak mengisi teks promosi), juga dalam Bahasa Inggris untuk instruksi ke Gemini
+            const defaultPromotionalText = `Special promo for ${product}!`; 
+            const finalPromotionalText = text || defaultPromotionalText; // Gunakan input user, atau default English jika kosong
             
             return `#ROLE
 You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who specializes in creating hyper-realistic, professional advertising posters for promotional content, specifically for generating eye-catching commercial posters similar to Indonesian food and service advertisements.
@@ -922,25 +928,25 @@ You are an expert in creating visually striking promotional posters with clear p
 Create a comprehensive prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The poster should be in the category of ${category} (${categoryDescriptions[category]}) and have a ${styleDescriptions[style]} visual style.
 
 #PROMPT STRUCTURE MUST INCLUDE:
-Product focus: Clear visual emphasis on "${product}" as the main subject
-Theme integration: Visual elements that represent "${theme}"
-Typography: Bold, clear text with "${promotionalText}" as the main promotional message
+Product focus: Clear visual emphasis on the product "${product}" as the main subject
+Theme integration: Visual elements that represent the theme "${theme}"
+Typography: Bold, clear text. The main promotional message "${finalPromotionalText}" should be prominently displayed.
 Visual style: ${styleDescriptions[style]}
 Color scheme: Harmonious color palette that enhances the product appeal
 Composition: Balanced layout with the product as the focal point
 Lighting: Professional commercial lighting that makes the product look appealing
 Background: Complementary background that doesn't distract from the product
 Additional elements: Supporting visual elements that enhance the theme and category
-Text elements: Promotional text in English language, including product name and promotional message
+Text elements: Crucially, include the exact original Indonesian product name "${product}", theme "${theme}", and promotional text "${text}" (if provided) directly on the poster. If promotional text is empty, generate an appropriate Indonesian promotional text.
 Output specs: High resolution, commercial quality, suitable for social media and print advertising
 
 #RESPONSE STYLE
 Write in dense paragraph form (no bullet points) so it's copy-friendly.
 Include specific details about the product placement, typography, and visual elements.
-Provide examples of text elements that would appear on the poster in English.
+Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster.
 
 #TASK
-Create a detailed prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster suitable for promotional purposes. Include specific visual elements, text suggestions, and design principles that align with the ${category} category and ${style} visual style.
+Create a detailed prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster suitable for promotional purposes. Include specific visual elements, design principles, and ensure the original Indonesian text for product name ("${product}"), theme ("${theme}"), and promotional text ("${text}") is clearly instructed to be placed on the poster. If "${text}" is empty, generate a suitable Indonesian promotional text for the poster.
 `;
         }
 
@@ -965,19 +971,19 @@ Create a detailed prompt for generating a professional advertising poster for "$
             let promptForSuggestion = '';
             switch (targetId) {
                 case 'subject':
-                    promptForSuggestion = 'Berikan satu contoh subjek yang menarik untuk dihasilkan oleh generator gambar AI photorealistic. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan.';
+                    promptForSuggestion = 'Berikan satu contoh subjek yang menarik untuk dihasilkan oleh generator gambar AI photorealistic. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
                     break;
                 case 'negativePrompt':
-                    promptForSuggestion = 'Berikan satu contoh keyword negatif yang umum digunakan untuk prompt AI image generation. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan.';
+                    promptForSuggestion = 'Berikan satu contoh keyword negatif yang umum digunakan untuk prompt AI image generation. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
                     break;
                 case 'posterProduct':
-                    promptForSuggestion = 'Berikan satu contoh nama produk untuk poster promosi. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan.';
+                    promptForSuggestion = 'Berikan satu contoh nama produk atau jasa untuk poster promosi. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
                     break;
                 case 'posterTheme':
-                    promptForSuggestion = 'Berikan satu contoh tema poster promosi yang menarik. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan.';
+                    promptForSuggestion = 'Berikan satu contoh tema poster promosi yang menarik. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
                     break;
                 case 'posterText':
-                    promptForSuggestion = 'Berikan satu contoh teks promosi singkat dan menarik untuk poster. Cukup berikan contohnya saja dalam bahasa Indonesia, jangan ada teks tambahan.';
+                    promptForSuggestion = 'Berikan satu contoh teks promosi singkat dan menarik untuk poster. Cukup berikan contohnya saja dalam bahasa Indonesia, tanpa teks tambahan.';
                     break;
                 default:
                     showToast('Target saran tidak dikenal.', 'error');
