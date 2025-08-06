@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VDMAX PROMPT INDONESIA - Generator Prompt AI</title>
+    <title>VDMAX PROMPT INDONESIA - AI Prompt Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -344,39 +344,39 @@
     <div class="hero">
         <div class="container">
             <h1><i class="fas fa-magic"></i> VDMAX PROMPT INDONESIA</h1>
-            <p>Generator prompt profesional dengan Gemini 2.5 Flash untuk menghasilkan gambar AI ultra-realistis</p>
+            <p>Professional prompt generator with Gemini 2.5 Flash to produce ultra-realistic AI images</p>
         </div>
     </div>
 
     <div class="container container-custom">
         <div class="card">
-            <h3 class="mb-4"><i class="fas fa-cogs"></i> Pengaturan Generator Prompt</h3>
+            <h3 class="mb-4"><i class="fas fa-cogs"></i> Prompt Generator Settings</h3>
             
             <div class="api-key-container">
                 <div class="api-key-header">
                     <i class="fas fa-key"></i>
-                    <strong>Kunci API Gemini</strong>
+                    <strong>Gemini API Key</strong>
                 </div>
-                <p class="mb-2">Masukkan kunci API Gemini Anda untuk menggunakan generator ini.</p>
+                <p class="mb-2">Enter your Gemini API key to use this generator.</p>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="apiKey" placeholder="Masukkan kunci API Gemini Anda">
+                    <input type="password" class="form-control" id="apiKey" placeholder="Enter your Gemini API key">
                     <button class="btn btn-outline-secondary" type="button" id="toggleApiKey">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
-                <small class="text-muted">Kunci API Anda akan disimpan secara lokal di browser Anda.</small>
+                <small class="text-muted">Your API key will be stored locally in your browser.</small>
             </div>
             
             <div class="tab-container">
                 <ul class="nav nav-tabs" id="promptTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="single-image-tab" data-bs-toggle="tab" data-bs-target="#single-image" type="button" role="tab" aria-controls="single-image" aria-selected="true">
-                            <i class="fas fa-image me-2"></i> Gambar Tunggal
+                            <i class="fas fa-image me-2"></i> Single Image
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="poster-tab" data-bs-toggle="tab" data-bs-target="#poster" type="button" role="tab" aria-controls="poster" aria-selected="false">
-                            <i class="fas fa-ad me-2"></i> Poster Promosi
+                            <i class="fas fa-ad me-2"></i> Promotional Poster
                         </button>
                     </li>
                 </ul>
@@ -384,13 +384,13 @@
                     <!-- Single Image Tab -->
                     <div class="tab-pane fade show active" id="single-image" role="tabpanel" aria-labelledby="single-image-tab">
                         <div class="mb-3">
-                            <label for="subject" class="form-label">Subjek yang Diinginkan</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Contoh: wanita berpakaian tradisional di sawah">
-                            <small class="text-muted">Jelaskan subjek atau objek yang ingin Anda hasilkan gambarnya.</small>
+                            <label for="subject" class="form-label">Desired Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Example: woman in traditional clothes in a rice field">
+                            <small class="text-muted">Describe the subject or object you want to generate an image of.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Gaya Visual</label>
+                            <label class="form-label">Visual Style</label>
                             <div class="specialization-options">
                                 <div class="specialization-chip active" data-style="magazine">
                                     <i class="fas fa-book me-1"></i> Magazine
@@ -414,15 +414,15 @@
                                     <i class="fas fa-globe-americas me-1"></i> National Geographic
                                 </div>
                             </div>
-                            <small class="text-muted">Pilih gaya visual yang Anda inginkan untuk gambar yang dihasilkan.</small>
+                            <small class="text-muted">Select the desired visual style for the generated image.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="promptCount" class="form-label">Jumlah Prompt</label>
+                            <label for="promptCount" class="form-label">Number of Prompts</label>
                             <select class="form-select" id="promptCount">
                                 <option value="1">1 Prompt</option>
-                                <option value="3" selected>3 Prompt</option>
-                                <option value="5">5 Prompt</option>
+                                <option value="3" selected>3 Prompts</option>
+                                <option value="5">5 Prompts</option>
                             </select>
                         </div>
                     </div>
@@ -430,76 +430,76 @@
                     <!-- Poster Tab -->
                     <div class="tab-pane fade" id="poster" role="tabpanel" aria-labelledby="poster-tab">
                         <div class="mb-3">
-                            <label for="posterProduct" class="form-label">Produk/Jasa yang Dipromosikan</label>
-                            <input type="text" class="form-control" id="posterProduct" placeholder="Contoh: CEMILAN POBUD">
-                            <small class="text-muted">Nama produk atau jasa yang ingin Anda promosikan.</small>
+                            <label for="posterProduct" class="form-label">Promoted Product/Service</label>
+                            <input type="text" class="form-control" id="posterProduct" placeholder="Example: CITRUK BUNDA">
+                            <small class="text-muted">Name of the product or service you want to promote.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="posterTheme" class="form-label">Tema Poster</label>
-                            <input type="text" class="form-control" id="posterTheme" placeholder="Contoh: Camilan Lezat untuk Semua Usia">
-                            <small class="text-muted">Tema atau konsep utama untuk poster Anda.</small>
+                            <label for="posterTheme" class="form-label">Poster Theme</label>
+                            <input type="text" class="form-control" id="posterTheme" placeholder="Example: Delicious Snacks for All Ages">
+                            <small class="text-muted">Main theme or concept for your poster.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Kategori Poster</label>
+                            <label class="form-label">Poster Category</label>
                             <div class="poster-category-grid">
                                 <div class="poster-category-item selected" data-category="makanan">
-                                    <i class="fas fa-utensils me-1"></i> Makanan
+                                    <i class="fas fa-utensils me-1"></i> Food
                                 </div>
                                 <div class="poster-category-item" data-category="minuman">
-                                    <i class="fas fa-glass-cheers me-1"></i> Minuman
+                                    <i class="fas fa-glass-cheers me-1"></i> Drink
                                 </div>
                                 <div class="poster-category-item" data-category="layanan">
-                                    <i class="fas fa-concierge-bell me-1"></i> Layanan
+                                    <i class="fas fa-concierge-bell me-1"></i> Service
                                 </div>
                                 <div class="poster-category-item" data-category="produk">
-                                    <i class="fas fa-shopping-bag me-1"></i> Produk
+                                    <i class="fas fa-shopping-bag me-1"></i> Product
                                 </div>
                                 <div class="poster-category-item" data-category="acara">
-                                    <i class="fas fa-calendar-alt me-1"></i> Acara
+                                    <i class="fas fa-calendar-alt me-1"></i> Event
                                 </div>
                                 <div class="poster-category-item" data-category="promo">
                                     <i class="fas fa-tags me-1"></i> Promo
                                 </div>
                             </div>
-                            <small class="text-muted">Pilih kategori yang paling sesuai dengan poster Anda.</small>
+                            <small class="text-muted">Select the category that best fits your poster.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="posterText" class="form-label">Teks Promosi (Opsional)</label>
-                            <input type="text" class="form-control" id="posterText" placeholder="Contoh: RENYAH DAN GURIH!">
-                            <small class="text-muted">Teks singkat yang ingin ditampilkan di poster. Jika kosong, akan dibuatkan otomatis.</small>
+                            <label for="posterText" class="form-label">Promotional Text (Optional)</label>
+                            <input type="text" class="form-control" id="posterText" placeholder="Example: CRUNCHY AND SAVORY!">
+                            <small class="text-muted">Short text to be displayed on the poster. If left empty, it will be generated automatically.</small>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="posterStyle" class="form-label">Gaya Visual Poster</label>
+                            <label for="posterStyle" class="form-label">Poster Visual Style</label>
                             <select class="form-select" id="posterStyle">
-                                <option value="colorful">Warna-warni dan Menarik</option>
-                                <option value="minimalist">Minimalis dan Elegan</option>
-                                <option value="vintage">Vintage dan Retro</option>
-                                <option value="modern">Modern dan Futuristik</option>
-                                <option value="natural">Alami dan Organik</option>
+                                <option value="colorful">Colorful and Attractive</option>
+                                <option value="minimalist">Minimalist and Elegant</option>
+                                <option value="vintage">Vintage and Retro</option>
+                                <option value="modern">Modern and Futuristic</option>
+                                <option value="natural">Natural and Organic</option>
                             </select>
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Contoh Poster Serupa</label>
+                            <label class="form-label">Similar Poster Examples</label>
                             <div class="poster-example">
                                 <div class="poster-example-item">
                                     <i class="fas fa-cookie-bite"></i>
                                     <h5>CEMILAN POBUD</h5>
-                                    <p>Poster camilan dengan kemasan produk yang menarik</p>
+                                    <p>Snack poster with attractive product packaging</p>
                                 </div>
                                 <div class="poster-example-item">
                                     <i class="fas fa-truck"></i>
                                     <h5>PAKETIN AJA GOY</h5>
-                                    <p>Poster layanan pengiriman dengan desain yang dinamis</p>
+                                    <p>Delivery service poster with dynamic design</p>
                                 </div>
                                 <div class="poster-example-item">
                                     <i class="fas fa-drumstick-bite"></i>
                                     <h5>FESTIVAL DURIAN</h5>
-                                    <p>Poster acara festival dengan elemen produk utama</p>
+                                    <p>Festival event poster with main product elements</p>
                                 </div>
                             </div>
                         </div>
@@ -516,12 +516,12 @@
         
         <div class="loading" id="loadingIndicator">
             <div class="loading-spinner"></div>
-            <p class="mt-3">Sedang menghasilkan prompt...</p>
+            <p class="mt-3">Generating prompt...</p>
         </div>
         
         <div class="result-container" id="resultContainer">
             <div class="card">
-                <h3 class="mb-4"><i class="fas fa-file-alt"></i> Hasil Prompt</h3>
+                <h3 class="mb-4"><i class="fas fa-file-alt"></i> Prompt Results</h3>
                 <div id="resultContent">
                     <!-- Results will be inserted here -->
                 </div>
@@ -532,7 +532,7 @@
     <div class="footer">
         <div class="container">
             <p>&copy; 2025 VDMAX PROMPT INDONESIA. All rights reserved.</p>
-            <p>Dibuat dengan <i class="fas fa-heart" style="color: #ff6b6b;"></i> untuk para kreator AI Indonesia</p>
+            <p>Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for Indonesian AI creators</p>
         </div>
     </div>
 
@@ -600,7 +600,7 @@
             
             // Validation
             if (!apiKey) {
-                showToast('Silakan masukkan kunci API Gemini Anda', 'error');
+                showToast('Please enter your Gemini API key', 'error');
                 return;
             }
             
@@ -618,7 +618,7 @@
             
             // Validation
             if (!subject) {
-                showToast('Silakan masukkan subjek yang diinginkan', 'error');
+                showToast('Please enter the desired subject', 'error');
                 return;
             }
             
@@ -636,7 +636,7 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    showToast('Terjadi kesalahan saat menghasilkan prompt. Silakan coba lagi.', 'error');
+                    showToast('An error occurred while generating the prompt. Please try again.', 'error');
                 })
                 .finally(() => {
                     document.getElementById('loadingIndicator').style.display = 'none';
@@ -652,12 +652,12 @@
             
             // Validation
             if (!posterProduct) {
-                showToast('Silakan masukkan produk/jasa yang dipromosikan', 'error');
+                showToast('Please enter the promoted product/service', 'error');
                 return;
             }
             
             if (!posterTheme) {
-                showToast('Silakan masukkan tema poster', 'error');
+                showToast('Please enter the poster theme', 'error');
                 return;
             }
             
@@ -675,7 +675,7 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    showToast('Terjadi kesalahan saat menghasilkan prompt. Silakan coba lagi.', 'error');
+                    showToast('An error occurred while generating the prompt. Please try again.', 'error');
                 })
                 .finally(() => {
                     document.getElementById('loadingIndicator').style.display = 'none';
@@ -759,23 +759,23 @@ Each prompt must include all the elements from the advanced prompt structure and
         
         function buildPosterPrompt(product, theme, text, style, category) {
             const styleDescriptions = {
-                'colorful': 'warna-warni dan menarik dengan kontras tinggi',
-                'minimalist': 'minimalis dan elegan dengan ruang negatif yang banyak',
-                'vintage': 'vintage dan retro dengan filter tua dan tekstur',
-                'modern': 'modern dan futuristik dengan desain bersih dan tipografi bold',
-                'natural': 'alami dan organik dengan elemen alam dan warna earthy'
+                'colorful': 'colorful and attractive with high contrast',
+                'minimalist': 'minimalist and elegant with ample negative space',
+                'vintage': 'vintage and retro with old filters and textures',
+                'modern': 'modern and futuristic with clean design and bold typography',
+                'natural': 'natural and organic with nature elements and earthy colors'
             };
             
             const categoryDescriptions = {
-                'makanan': 'makanan dengan fokus pada tekstur dan kesegaran',
-                'minuman': 'minuman dengan fokus pada kesegaran dan penyajian',
-                'layanan': 'layanan dengan fokus pada profesionalisme dan kepuasan pelanggan',
-                'produk': 'produk dengan fokus pada kemasan dan manfaat',
-                'acara': 'acara dengan fokus pada atmosfer dan kegiatan',
-                'promo': 'promo dengan fokus pada diskon dan penawaran khusus'
+                'makanan': 'food with a focus on texture and freshness',
+                'minuman': 'drinks with a focus on freshness and presentation',
+                'layanan': 'services with a focus on professionalism and customer satisfaction',
+                'produk': 'products with a focus on packaging and benefits',
+                'acara': 'events with a focus on atmosphere and activities',
+                'promo': 'promotions with a focus on discounts and special offers'
             };
             
-            const promotionalText = text || `Promo spesial untuk ${product}!`;
+            const promotionalText = text || `Special promo for ${product}!`; // Changed default text to English
             
             return `#ROLE
 You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who specializes in creating hyper-realistic, professional advertising posters for promotional content, specifically for generating eye-catching commercial posters similar to Indonesian food and service advertisements.
@@ -796,13 +796,13 @@ Composition: Balanced layout with the product as the focal point
 Lighting: Professional commercial lighting that makes the product look appealing
 Background: Complementary background that doesn't distract from the product
 Additional elements: Supporting visual elements that enhance the theme and category
-Text elements: Promotional text in Indonesian language, including product name and promotional message
+Text elements: Promotional text in English language, including product name and promotional message
 Output specs: High resolution, commercial quality, suitable for social media and print advertising
 
 #RESPONSE STYLE
 Write in dense paragraph form (no bullet points) so it's copy-friendly.
 Include specific details about the product placement, typography, and visual elements.
-Provide examples of text elements that would appear on the poster in Indonesian.
+Provide examples of text elements that would appear on the poster in English.
 
 #TASK
 Create a detailed prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster suitable for promotional purposes. Include specific visual elements, text suggestions, and design principles that align with the ${category} category and ${style} visual style.
@@ -844,6 +844,7 @@ Create a detailed prompt for generating a professional advertising poster for "$
             
             if (type === 'single') {
                 // Split the response into individual prompts
+                // Assuming Gemini's response will use "Prompt 1:", "Prompt 2:", etc.
                 const prompts = response.split(/Prompt \d+:/).filter(prompt => prompt.trim() !== '');
                 
                 // Create a result box for each prompt
@@ -858,11 +859,11 @@ Create a detailed prompt for generating a professional advertising poster for "$
                     
                     const resultTitle = document.createElement('div');
                     resultTitle.className = 'result-title';
-                    resultTitle.innerHTML = `<i class="fas fa-file-alt me-2"></i> Prompt ${promptNumber} - Gaya ${getStyleName(style)}`;
+                    resultTitle.innerHTML = `<i class="fas fa-file-alt me-2"></i> Prompt ${promptNumber} - Style ${getStyleName(style)}`;
                     
                     const copyButton = document.createElement('button');
                     copyButton.className = 'btn btn-sm btn-copy';
-                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
                     copyButton.addEventListener('click', () => copyToClipboard(prompt.trim()));
                     
                     resultHeader.appendChild(resultTitle);
@@ -885,11 +886,11 @@ Create a detailed prompt for generating a professional advertising poster for "$
                 
                 const resultTitle = document.createElement('div');
                 resultTitle.className = 'result-title';
-                resultTitle.innerHTML = `<i class="fas fa-ad me-2"></i> Prompt untuk Poster Promosi`;
+                resultTitle.innerHTML = `<i class="fas fa-ad me-2"></i> Promotional Poster Prompt`;
                 
                 const copyButton = document.createElement('button');
                 copyButton.className = 'btn btn-sm btn-copy';
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
                 copyButton.addEventListener('click', () => copyToClipboard(response.trim()));
                 
                 resultHeader.appendChild(resultTitle);
@@ -908,7 +909,7 @@ Create a detailed prompt for generating a professional advertising poster for "$
             // Scroll to results
             resultContainer.scrollIntoView({ behavior: 'smooth' });
             
-            showToast('Prompt berhasil dihasilkan!', 'success');
+            showToast('Prompt successfully generated!', 'success');
         }
         
         function getStyleName(style) {
@@ -926,9 +927,9 @@ Create a detailed prompt for generating a professional advertising poster for "$
         
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast('Prompt berhasil disalin!', 'success');
+                showToast('Prompt successfully copied!', 'success');
             }).catch(err => {
-                showToast('Gagal menyalin prompt. Silakan salin secara manual.', 'error');
+                showToast('Failed to copy prompt. Please copy manually.', 'error');
             });
         }
         
