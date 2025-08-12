@@ -17,12 +17,14 @@
             --warning-color: #ff9800;
             --poster-color: #e91e63;
         }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f7fa;
             color: var(--dark-color);
             line-height: 1.6;
         }
+        
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -31,20 +33,24 @@
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+        
         .hero h1 {
             font-weight: 700;
             margin-bottom: 1rem;
             font-size: 2.5rem;
         }
+        
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
         }
+        
         .container-custom {
             max-width: 1000px;
             margin: 2rem auto;
         }
+        
         .card {
             background: white;
             border-radius: 15px;
@@ -53,23 +59,28 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-left: 5px solid var(--primary-color);
         }
+        
         .card-poster {
             border-left: 5px solid var(--poster-color);
         }
+        
         .form-label {
             font-weight: 600;
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
+        
         .form-control, .form-select, .form-textarea {
             border-radius: 8px;
             border: 1px solid #ced4da;
             padding: 0.75rem;
         }
+        
         .form-control:focus, .form-select:focus, .form-textarea:focus {
             border-color: var(--accent-color);
             box-shadow: 0 0 0 0.25rem rgba(92, 107, 192, 0.25);
         }
+        
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -78,19 +89,23 @@
             border-radius: 8px;
             transition: all 0.3s ease;
         }
+        
         .btn-primary:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
             transform: translateY(-2px);
         }
+        
         .btn-poster {
             background-color: var(--poster-color);
             border-color: var(--poster-color);
         }
+        
         .btn-poster:hover {
             background-color: #c2185b;
             border-color: #c2185b;
         }
+        
         .btn-copy {
             background-color: var(--accent-color);
             color: white;
@@ -99,14 +114,17 @@
             border-radius: 6px;
             transition: all 0.3s ease;
         }
+        
         .btn-copy:hover {
             background-color: var(--secondary-color);
             color: white;
         }
+        
         .result-container {
             margin-top: 2rem;
             display: none;
         }
+        
         .result-box {
             background: #f8f9fa;
             border: 1px solid #dee2e6;
@@ -119,16 +137,19 @@
             font-size: 0.9rem;
             white-space: pre-wrap;
         }
+        
         .result-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
+        
         .result-title {
             font-weight: 600;
             color: var(--primary-color);
         }
+        
         .footer {
             background-color: var(--primary-color);
             color: white;
@@ -136,11 +157,13 @@
             padding: 2rem 0;
             margin-top: 3rem;
         }
+        
         .loading {
             display: none;
             text-align: center;
             padding: 2rem;
         }
+        
         .loading-spinner {
             display: inline-block;
             width: 40px;
@@ -150,15 +173,18 @@
             border-top-color: var(--primary-color);
             animation: spin 1s ease-in-out infinite;
         }
+        
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
         .toast-container {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
         }
+        
         .custom-toast {
             background-color: var(--success-color);
             color: white;
@@ -170,6 +196,7 @@
             align-items: center;
             animation: slideIn 0.3s ease;
         }
+        
         @keyframes slideIn {
             from {
                 transform: translateX(100%);
@@ -180,27 +207,32 @@
                 opacity: 1;
             }
         }
+        
         .api-key-container {
             background-color: var(--light-color);
             border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1.5rem;
         }
+        
         .api-key-header {
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
         }
+        
         .api-key-header i {
             color: var(--warning-color);
             margin-right: 0.5rem;
         }
+        
         .specialization-options {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
+        
         .specialization-chip {
             background-color: var(--light-color);
             border-radius: 20px;
@@ -210,16 +242,19 @@
             align-items: center;
             cursor: pointer;
         }
+        
         .specialization-chip.active {
             background-color: var(--accent-color);
             color: white;
         }
+        
         .poster-category-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
+        
         .poster-category-item {
             background-color: var(--light-color);
             border-radius: 8px;
@@ -229,20 +264,25 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
         .poster-category-item:hover {
             background-color: var(--accent-color);
             color: white;
         }
+        
         .poster-category-item.selected {
             background-color: var(--poster-color);
             color: white;
         }
+        
         .tab-container {
             margin-bottom: 1.5rem;
         }
+        
         .nav-tabs {
             border-bottom: 2px solid var(--light-color);
         }
+        
         .nav-tabs .nav-link {
             color: var(--secondary-color);
             font-weight: 500;
@@ -251,59 +291,103 @@
             border-radius: 0;
             padding: 0.75rem 1rem;
         }
+        
         .nav-tabs .nav-link:hover {
             border-bottom-color: var(--accent-color);
             color: var(--primary-color);
         }
+        
         .nav-tabs .nav-link.active {
             color: var(--primary-color);
             background-color: transparent;
             border-bottom-color: var(--primary-color);
         }
+        
         .tab-content {
             padding: 1.5rem 0;
         }
+        
+        .poster-example {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .poster-example-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .poster-example-item i {
+            font-size: 2rem;
+            color: var(--poster-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .poster-example-item h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poster-example-item p {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        /* Gaya untuk Fitur Saran AI */
         .input-with-suggestion {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* Tambahkan ruang bawah untuk area saran */
         }
         .suggestion-trigger {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Pindahkan tombol ke kanan */
             margin-top: 0.5rem;
         }
         .suggestion-area {
             margin-top: 0.5rem;
             padding: 0.75rem;
-            background-color: #e3f2fd;
-            border: 1px solid #90caf9;
+            background-color: #e3f2fd; /* Light blue background */
+            border: 1px solid #90caf9; /* Blue border */
             border-radius: 8px;
-            display: none;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            display: flex;
+            justify-content: flex-start; /* Mengatur item dari kiri */
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            display: none; /* Sembunyikan secara default */
+            flex-wrap: wrap; /* Izinkan saran membungkus jika terlalu panjang */
+            gap: 0.5rem; /* Jarak antar saran jika ada banyak */
         }
         .suggestion-area.active {
             display: flex;
         }
         .suggestion-text {
             flex-grow: 1;
-            font-style: normal;
-            color: var(--primary-color);
-            line-height: 1.4;
+            /* margin-right: 1rem; */ /* Hapus jika gap sudah menangani */
+            font-style: italic;
+            word-break: break-word; /* Pastikan teks panjang tidak overflow */
+            line-height: 1.4; /* Meningkatkan keterbacaan */
+            font-style: normal; /* Normal font style for generated text */
+            color: var(--primary-color); /* Warna teks saran */
         }
-        .suggestion-text span {
+        .suggestion-text span { /* Gaya untuk chip saran individual */
             display: inline-block;
-            background-color: #bbdefb;
+            background-color: #bbdefb; /* Latar belakang chip */
             border-radius: 5px;
             padding: 0.3rem 0.6rem;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            margin: 2px;
         }
         .suggestion-text span:hover {
-            background-color: #90caf9;
+            background-color: #90caf9; /* Hover effect */
         }
-        .btn-suggest-ai {
+        .btn-suggest-ai, .btn-use-suggestion {
             white-space: nowrap;
         }
         .suggestion-loading {
@@ -316,19 +400,81 @@
             border-top-color: var(--primary-color);
             animation: spin 1s ease-in-out infinite;
         }
+        
+        /* Gaya untuk upload gambar */
+        .image-upload-container {
+            margin-top: 1rem;
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .image-upload-container:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(92, 107, 192, 0.05);
+        }
+        
+        .image-preview-container {
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-actions {
+            margin-top: 0.5rem;
+        }
+        
+        .btn-analyze {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-analyze:hover {
+            background-color: #388e3c;
+            border-color: #388e3c;
+        }
+        
+        .analysis-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            border-left: 4px solid var(--success-color);
+            display: none;
+        }
+        
+        .analysis-result h6 {
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .analysis-result p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="container">
             <h1><i class="fas fa-magic"></i> VDMAX PROMPT INDONESIA</h1>
-            <p>Generator prompt profesional dengan "Logika Pintar" Gemini untuk menghasilkan gambar AI ultra-realistis</p>
+            <p>Generator prompt profesional dengan Gemini 2.5 Flash untuk menghasilkan gambar AI ultra-realistis</p>
         </div>
     </div>
 
     <div class="container container-custom">
         <div class="card">
             <h3 class="mb-4"><i class="fas fa-cogs"></i> Pengaturan Generator Prompt</h3>
+            
             <div class="api-key-container">
                 <div class="api-key-header">
                     <i class="fas fa-key"></i>
@@ -343,7 +489,7 @@
                 </div>
                 <small class="text-muted">Kunci API Anda akan disimpan secara lokal di browser Anda.</small>
             </div>
-
+            
             <div class="tab-container">
                 <ul class="nav nav-tabs" id="promptTabs" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -371,13 +517,16 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-subject">
                                 <span class="suggestion-text"></span>
+                                <!-- Tombol 'Gunakan' disembunyikan jika ada multiple choice, tapi jaga jika nanti Gemini hanya beri 1 saran -->
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="subject" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
+
                         <div class="mb-3 input-with-suggestion">
                             <label for="negativePrompt" class="form-label">Prompt Negatif (Opsional)</label>
                             <textarea class="form-control" id="negativePrompt" rows="3" placeholder="Contoh: teks, tanda air, buram, cacat"></textarea>
-                            <small class="text-muted">Jelaskan hal-hal yang TIDAK ingin Anda lihat dalam gambar yang dihasilkan.</small>
+                            <small class="text-muted">Jelaskan hal-hal yang TIDAK ingin Anda lihat dalam gambar yang dihasilkan (misalnya, 'teks', 'tanda air', 'cacat').</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="negativePrompt">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
@@ -385,22 +534,39 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-negativePrompt">
                                 <span class="suggestion-text"></span>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="negativePrompt" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
+                        
                         <div class="mb-3">
                             <label class="form-label">Gaya Visual</label>
                             <div class="specialization-options">
-                                <div class="specialization-chip active" data-style="magazine"><i class="fas fa-book me-1"></i> Magazine</div>
-                                <div class="specialization-chip" data-style="netflix"><i class="fas fa-film me-1"></i> Netflix</div>
-                                <div class="specialization-chip" data-style="korean"><i class="fas fa-heart me-1"></i> Korean Drama</div>
-                                <div class="specialization-chip" data-style="kpop"><i class="fas fa-music me-1"></i> K-Pop</div>
-                                <div class="specialization-chip" data-style="hollywood"><i class="fas fa-star me-1"></i> Hollywood</div>
-                                <div class="specialization-chip" data-style="espn"><i class="fas fa-football-ball me-1"></i> ESPN</div>
-                                <div class="specialization-chip" data-style="natgeo"><i class="fas fa-globe-americas me-1"></i> National Geographic</div>
+                                <div class="specialization-chip active" data-style="magazine">
+                                    <i class="fas fa-book me-1"></i> Magazine
+                                </div>
+                                <div class="specialization-chip" data-style="netflix">
+                                    <i class="fas fa-film me-1"></i> Netflix
+                                </div>
+                                <div class="specialization-chip" data-style="korean">
+                                    <i class="fas fa-heart me-1"></i> Korean Drama
+                                </div>
+                                <div class="specialization-chip" data-style="kpop">
+                                    <i class="fas fa-music me-1"></i> K-Pop
+                                </div>
+                                <div class="specialization-chip" data-style="hollywood">
+                                    <i class="fas fa-star me-1"></i> Hollywood
+                                </div>
+                                <div class="specialization-chip" data-style="espn">
+                                    <i class="fas fa-football-ball me-1"></i> ESPN
+                                </div>
+                                <div class="specialization-chip" data-style="natgeo">
+                                    <i class="fas fa-globe-americas me-1"></i> National Geographic
+                                </div>
                             </div>
                             <small class="text-muted">Pilih gaya visual yang Anda inginkan untuk gambar yang dihasilkan.</small>
                         </div>
+                        
                         <div class="mb-3">
                             <label for="promptCount" class="form-label">Jumlah Prompt</label>
                             <select class="form-select" id="promptCount">
@@ -410,7 +576,7 @@
                             </select>
                         </div>
                     </div>
-
+                    
                     <!-- Poster Tab -->
                     <div class="tab-pane fade" id="poster" role="tabpanel" aria-labelledby="poster-tab">
                         <div class="mb-3 input-with-suggestion">
@@ -424,13 +590,15 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterProduct">
                                 <span class="suggestion-text"></span>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterProduct" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
+                        
                         <div class="mb-3 input-with-suggestion">
                             <label for="posterTheme" class="form-label">Tema Poster</label>
                             <input type="text" class="form-control" id="posterTheme" placeholder="Contoh: Petualangan Tanpa Batas">
-                            <small class="text-muted">Tema atau konsep utama untuk poster Anda. Saran AI akan relevan dengan produk di atas.</small>
+                            <small class="text-muted">Tema atau konsep utama untuk poster Anda.</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterTheme">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
@@ -438,25 +606,40 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterTheme">
                                 <span class="suggestion-text"></span>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterTheme" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
+                        
                         <div class="mb-3">
                             <label class="form-label">Kategori Poster</label>
                             <div class="poster-category-grid">
-                                <div class="poster-category-item selected" data-category="makanan"><i class="fas fa-utensils me-1"></i> Makanan</div>
-                                <div class="poster-category-item" data-category="minuman"><i class="fas fa-glass-cheers me-1"></i> Minuman</div>
-                                <div class="poster-category-item" data-category="layanan"><i class="fas fa-concierge-bell me-1"></i> Layanan</div>
-                                <div class="poster-category-item" data-category="produk"><i class="fas fa-shopping-bag me-1"></i> Produk</div>
-                                <div class="poster-category-item" data-category="acara"><i class="fas fa-calendar-alt me-1"></i> Acara</div>
-                                <div class="poster-category-item" data-category="promo"><i class="fas fa-tags me-1"></i> Promo</div>
+                                <div class="poster-category-item selected" data-category="makanan">
+                                    <i class="fas fa-utensils me-1"></i> Makanan
+                                </div>
+                                <div class="poster-category-item" data-category="minuman">
+                                    <i class="fas fa-glass-cheers me-1"></i> Minuman
+                                </div>
+                                <div class="poster-category-item" data-category="layanan">
+                                    <i class="fas fa-concierge-bell me-1"></i> Layanan
+                                </div>
+                                <div class="poster-category-item" data-category="produk">
+                                    <i class="fas fa-shopping-bag me-1"></i> Produk
+                                </div>
+                                <div class="poster-category-item" data-category="acara">
+                                    <i class="fas fa-calendar-alt me-1"></i> Acara
+                                </div>
+                                <div class="poster-category-item" data-category="promo">
+                                    <i class="fas fa-tags me-1"></i> Promo
+                                </div>
                             </div>
                             <small class="text-muted">Pilih kategori yang paling sesuai dengan poster Anda.</small>
                         </div>
+                        
                         <div class="mb-3 input-with-suggestion">
                             <label for="posterText" class="form-label">Teks Promosi (Opsional)</label>
                             <input type="text" class="form-control" id="posterText" placeholder="Contoh: Rasakan Perbedaannya, Dapatkan Sekarang!">
-                            <small class="text-muted">Teks singkat yang ingin ditampilkan di poster. Jika kosong, akan dibuatkan otomatis. Saran AI akan relevan dengan produk di atas.</small>
+                            <small class="text-muted">Teks singkat yang ingin ditampilkan di poster. Jika kosong, akan dibuatkan otomatis.</small>
                             <div class="suggestion-trigger">
                                 <button type="button" class="btn btn-outline-info btn-sm btn-suggest-ai" data-target="posterText">
                                     <i class="fas fa-lightbulb me-1"></i> Saran AI
@@ -464,23 +647,42 @@
                             </div>
                             <div class="suggestion-area" id="suggestion-posterText">
                                 <span class="suggestion-text"></span>
+                                <button class="btn btn-success btn-sm btn-use-suggestion" data-target="posterText" style="display: none;"><i class="fas fa-check me-1"></i> Gunakan</button>
                                 <div class="suggestion-loading"></div>
                             </div>
                         </div>
-
-                        <!-- NEW: Image Upload Section -->
+                        
+                        <!-- Upload Gambar -->
                         <div class="mb-3">
-                            <label for="posterImageUpload" class="form-label">Unggah Gambar Referensi (Opsional)</label>
-                            <input class="form-control" type="file" id="posterImageUpload" accept="image/*">
-                            <small class="text-muted">Unggah gambar untuk dianalisis dan dijadikan inspirasi gaya untuk prompt poster Anda. Jika diunggah, pilihan "Gaya Visual Poster" di bawah akan diabaikan.</small>
-                            <div id="imagePreviewContainer" style="display: none; margin-top: 1rem; position: relative; max-width: 200px;">
-                                <img id="imagePreview" src="#" alt="Pratinjau Gambar" style="width: 100%; border-radius: 8px;"/>
-                                <button id="removeImageBtn" style="position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 25px; height: 25px; font-weight: bold; cursor: pointer; line-height: 25px; text-align: center; padding: 0;">&times;</button>
+                            <label class="form-label">Upload Gambar Produk (Opsional)</label>
+                            <div class="image-upload-container">
+                                <input type="file" id="posterImage" accept="image/*" style="display: none;">
+                                <label for="posterImage" class="btn btn-outline-primary">
+                                    <i class="fas fa-upload me-2"></i> Pilih Gambar
+                                </label>
+                                <p class="mt-2 mb-0 text-muted">Upload gambar produk untuk analisis otomatis</p>
+                            </div>
+                            
+                            <div class="image-preview-container" id="imagePreviewContainer">
+                                <img id="imagePreview" class="image-preview" src="" alt="Preview">
+                                <div class="image-actions">
+                                    <button type="button" class="btn btn-sm btn-analyze" id="analyzeImageBtn">
+                                        <i class="fas fa-search me-1"></i> Analisis Gambar
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" id="removeImageBtn">
+                                        <i class="fas fa-trash me-1"></i> Hapus
+                                    </button>
+                                </div>
+                                
+                                <div class="analysis-result" id="analysisResult">
+                                    <h6><i class="fas fa-check-circle me-1"></i> Hasil Analisis Gambar</h6>
+                                    <div id="analysisText"></div>
+                                </div>
                             </div>
                         </div>
-
+                        
                         <div class="mb-3">
-                            <label for="posterStyle" class="form-label">Gaya Visual Poster (Jika tidak unggah gambar)</label>
+                            <label for="posterStyle" class="form-label">Gaya Visual Poster</label>
                             <select class="form-select" id="posterStyle">
                                 <option value="colorful">Warna-warni dan Menarik</option>
                                 <option value="minimalist">Minimalis dan Elegan</option>
@@ -489,22 +691,43 @@
                                 <option value="natural">Alami dan Organik</option>
                             </select>
                         </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Contoh Poster Serupa</label>
+                            <div class="poster-example">
+                                <div class="poster-example-item">
+                                    <i class="fas fa-cookie-bite"></i>
+                                    <h5>CEMILAN POBUD</h5>
+                                    <p>Poster camilan dengan kemasan produk yang menarik</p>
+                                </div>
+                                <div class="poster-example-item">
+                                    <i class="fas fa-truck"></i>
+                                    <h5>PAKETIN AJA GOY</h5>
+                                    <p>Poster layanan pengiriman dengan desain yang dinamis</p>
+                                </div>
+                                <div class="poster-example-item">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    <h5>FESTIVAL DURIAN</h5>
+                                    <p>Poster acara festival dengan elemen produk utama</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
+            
             <div class="d-grid gap-2">
                 <button class="btn btn-primary" id="generateBtn">
                     <i class="fas fa-magic me-2"></i> Generate Prompt
                 </button>
             </div>
         </div>
-
+        
         <div class="loading" id="loadingIndicator">
             <div class="loading-spinner"></div>
             <p class="mt-3">Sedang menghasilkan prompt...</p>
         </div>
-
+        
         <div class="result-container" id="resultContainer">
             <div class="card">
                 <h3 class="mb-4"><i class="fas fa-file-alt"></i> Hasil Prompt</h3>
@@ -514,32 +737,30 @@
             </div>
         </div>
     </div>
-
+    
     <div class="footer">
         <div class="container">
             <p>&copy; 2025 VDMAX PROMPT INDONESIA. Hak cipta dilindungi.</p>
             <p>Dibuat dengan <i class="fas fa-heart" style="color: #ff6b6b;"></i> untuk para kreator AI Indonesia</p>
         </div>
     </div>
-
+    
     <div class="toast-container" id="toastContainer"></div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // State variable for image data
-            let uploadedImageData = null;
-
-            // Load API key from localStorage
+            // Load API key from localStorage if available
             const savedApiKey = localStorage.getItem('geminiApiKey');
             if (savedApiKey) {
                 document.getElementById('apiKey').value = savedApiKey;
             }
-
+            
             // Toggle API key visibility
             document.getElementById('toggleApiKey').addEventListener('click', function() {
                 const apiKeyInput = document.getElementById('apiKey');
                 const toggleIcon = this.querySelector('i');
+                
                 if (apiKeyInput.type === 'password') {
                     apiKeyInput.type = 'text';
                     toggleIcon.classList.remove('fa-eye');
@@ -550,395 +771,747 @@
                     toggleIcon.classList.add('fa-eye');
                 }
             });
-
-            // Save API key to localStorage
+            
+            // Save API key to localStorage when changed
             document.getElementById('apiKey').addEventListener('change', function() {
                 localStorage.setItem('geminiApiKey', this.value);
             });
-
-            // Handle chip selection
-            document.querySelectorAll('.specialization-chip').forEach(chip => {
+            
+            // Handle specialization chip selection
+            const specializationChips = document.querySelectorAll('.specialization-chip');
+            specializationChips.forEach(chip => {
                 chip.addEventListener('click', function() {
-                    document.querySelectorAll('.specialization-chip').forEach(c => c.classList.remove('active'));
+                    // Remove active class from all chips
+                    specializationChips.forEach(c => c.classList.remove('active'));
+                    // Add active class to clicked chip
                     this.classList.add('active');
                 });
             });
-
+            
             // Handle poster category selection
-            document.querySelectorAll('.poster-category-item').forEach(category => {
+            const posterCategories = document.querySelectorAll('.poster-category-item');
+            posterCategories.forEach(category => {
                 category.addEventListener('click', function() {
-                    document.querySelectorAll('.poster-category-item').forEach(c => c.classList.remove('selected'));
+                    // Remove selected class from all categories
+                    posterCategories.forEach(c => c.classList.remove('selected'));
+                    // Add selected class to clicked category
                     this.classList.add('selected');
                 });
             });
-
-            // Generate button click handler
+            
+            // Generate prompt button click handler
             document.getElementById('generateBtn').addEventListener('click', generatePrompt);
 
-            // AI Suggestion button listeners
-            document.querySelectorAll('.btn-suggest-ai').forEach(button => {
+            // --- Fitur Baru: Saran AI ---
+            const suggestButtons = document.querySelectorAll('.btn-suggest-ai');
+            suggestButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.dataset.target;
                     getAISuggestion(targetId);
                 });
             });
 
+            // "Gunakan" button is now dynamic within the suggestion-area, so its listener is set there
             // Clear suggestion when user types
-            document.querySelectorAll('.input-with-suggestion input, .input-with-suggestion textarea').forEach(input => {
+            const inputFieldsWithSuggestions = document.querySelectorAll('.input-with-suggestion input, .input-with-suggestion textarea');
+            inputFieldsWithSuggestions.forEach(input => {
                 input.addEventListener('input', function() {
-                    clearAISuggestion(this.id);
+                    const targetId = this.id;
+                    clearAISuggestion(targetId);
                 });
             });
-
-            // --- NEW: Image Upload Handlers ---
-            const posterImageUpload = document.getElementById('posterImageUpload');
+            // --- Akhir Fitur Baru ---
+            
+            // --- Fitur Upload Gambar ---
+            const posterImageInput = document.getElementById('posterImage');
             const imagePreviewContainer = document.getElementById('imagePreviewContainer');
             const imagePreview = document.getElementById('imagePreview');
             const removeImageBtn = document.getElementById('removeImageBtn');
-
-            posterImageUpload.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file && file.type.startsWith('image/')) {
+            const analyzeImageBtn = document.getElementById('analyzeImageBtn');
+            const analysisResult = document.getElementById('analysisResult');
+            const analysisText = document.getElementById('analysisText');
+            
+            posterImageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
                     const reader = new FileReader();
                     reader.onload = function(e) {
                         imagePreview.src = e.target.result;
                         imagePreviewContainer.style.display = 'block';
-                        uploadedImageData = {
-                            mimeType: file.type,
-                            data: e.target.result.split(',')[1] // Get Base64 data part
-                        };
-                        document.getElementById('posterStyle').disabled = true; // Disable style dropdown
-                        showToast('Gambar referensi diunggah. Gaya visual akan diadaptasi dari gambar ini.', 'info');
+                        analysisResult.style.display = 'none';
                     }
                     reader.readAsDataURL(file);
-                } else {
-                    showToast('Silakan pilih file gambar yang valid.', 'error');
-                    posterImageUpload.value = '';
                 }
             });
-
+            
             removeImageBtn.addEventListener('click', function() {
-                posterImageUpload.value = '';
-                imagePreview.src = '#';
+                posterImageInput.value = '';
                 imagePreviewContainer.style.display = 'none';
-                uploadedImageData = null;
-                document.getElementById('posterStyle').disabled = false; // Re-enable style dropdown
+                analysisResult.style.display = 'none';
             });
-
-            function generatePrompt() {
-                const apiKey = document.getElementById('apiKey').value.trim();
-                const activeTab = document.querySelector('.nav-tabs .nav-link.active').id;
-
-                if (!apiKey) {
-                    showToast('Silakan masukkan kunci API Gemini Anda', 'error');
-                    return;
-                }
-
-                if (activeTab === 'single-image-tab') {
-                    generateSingleImagePrompt(apiKey);
-                } else if (activeTab === 'poster-tab') {
-                    generatePosterPrompt(apiKey);
-                }
-            }
             
-            function generateSingleImagePrompt(apiKey) {
-                const subject = document.getElementById('subject').value.trim();
-                const negativePrompt = document.getElementById('negativePrompt').value.trim();
-                const promptCount = document.getElementById('promptCount').value;
-                const activeStyle = document.querySelector('.specialization-chip.active').dataset.style;
-
-                if (!subject) {
-                    showToast('Silakan masukkan subjek yang diinginkan', 'error');
-                    return;
-                }
-
-                document.getElementById('loadingIndicator').style.display = 'block';
-                document.getElementById('resultContainer').style.display = 'none';
-
-                const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount, negativePrompt);
-
-                callGeminiAPI(apiKey, geminiPrompt)
-                    .then(response => {
-                        displayResults(response, activeStyle, 'single');
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        showToast(`Terjadi kesalahan: ${error.message}`, 'error');
-                    })
-                    .finally(() => {
-                        document.getElementById('loadingIndicator').style.display = 'none';
-                    });
-            }
-
-            function generatePosterPrompt(apiKey) {
-                const posterProduct = document.getElementById('posterProduct').value.trim();
-                const posterTheme = document.getElementById('posterTheme').value.trim();
-                const posterText = document.getElementById('posterText').value.trim();
-
-                if (!posterProduct || !posterTheme) {
-                    showToast('Produk/Jasa dan Tema Poster wajib diisi', 'error');
-                    return;
-                }
-
-                document.getElementById('loadingIndicator').style.display = 'block';
-                document.getElementById('resultContainer').style.display = 'none';
-
-                if (uploadedImageData) {
-                    // --- Image-to-Prompt Flow ---
-                    const geminiPrompt = buildImageToPrompt(posterProduct, posterTheme, posterText);
-                    callGeminiAPI(apiKey, geminiPrompt, uploadedImageData)
-                        .then(response => displayResults(response, 'poster-from-image', 'poster'))
-                        .catch(error => {
-                            console.error('Error:', error);
-                            showToast(`Terjadi kesalahan: ${error.message}`, 'error');
-                        })
-                        .finally(() => document.getElementById('loadingIndicator').style.display = 'none');
-                } else {
-                    // --- Text-Only Flow ---
-                    const posterStyle = document.getElementById('posterStyle').value;
-                    const selectedCategory = document.querySelector('.poster-category-item.selected').dataset.category;
-                    const geminiPrompt = buildPosterPrompt(posterProduct, posterTheme, posterText, posterStyle, selectedCategory);
-                    callGeminiAPI(apiKey, geminiPrompt)
-                        .then(response => displayResults(response, 'poster', 'poster'))
-                        .catch(error => {
-                            console.error('Error:', error);
-                            showToast(`Terjadi kesalahan: ${error.message}`, 'error');
-                        })
-                        .finally(() => document.getElementById('loadingIndicator').style.display = 'none');
-                }
-            }
-            
-            // --- NEW: Contextual AI Suggestion Logic ---
-            async function getAISuggestion(targetId) {
+            analyzeImageBtn.addEventListener('click', function() {
                 const apiKey = document.getElementById('apiKey').value.trim();
                 if (!apiKey) {
-                    showToast('Masukkan Kunci API Gemini untuk mendapatkan saran.', 'error');
+                    showToast('Silakan masukkan kunci API Gemini Anda untuk menganalisis gambar', 'error');
                     return;
                 }
-
-                const suggestionArea = document.getElementById(`suggestion-${targetId}`);
-                const suggestionTextElem = suggestionArea.querySelector('.suggestion-text');
-                const loadingSpinner = suggestionArea.querySelector('.suggestion-loading');
-
-                suggestionTextElem.innerHTML = '';
-                loadingSpinner.style.display = 'block';
-                suggestionArea.classList.add('active');
-
-                const productContext = document.getElementById('posterProduct').value.trim();
-                let promptForSuggestion = '';
-
-                switch (targetId) {
-                    case 'subject':
-                        promptForSuggestion = `Berikan tiga hingga lima ide subjek fotorealistik dan menarik untuk gambar tunggal bergaya editorial/sinematik, cocok untuk AI image generator. Setiap ide harus spesifik dan menggambarkan adegan dengan jelas. Berikan ide-ide ini dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
-                        break;
-                    case 'negativePrompt':
-                        promptForSuggestion = `Berikan daftar lima hingga tujuh kata kunci negatif yang paling efektif untuk menghindari cacat seperti anatomi yang salah, teks, tanda air, buram, atau kualitas rendah. Berikan hanya daftar kata kunci tersebut dalam bahasa Inggris (karena lebih efektif), dipisahkan dengan tanda koma. Jangan ada teks tambahan.`;
-                        break;
-                    case 'posterProduct':
-                        promptForSuggestion = `Berikan tiga hingga lima nama produk atau jasa yang kreatif dan berkesan untuk poster promosi dari berbagai kategori (makanan, minuman, teknologi, fashion, layanan). Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan.`;
-                        break;
-                    case 'posterTheme':
-                        promptForSuggestion = productContext ?
-                            `Dengan produk utama "${productContext}", berikan tiga hingga lima ide tema poster promosi yang inovatif dan menarik secara visual. Tema harus menggambarkan konsep atau suasana. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan.` :
-                            `Berikan tiga hingga lima ide tema poster promosi yang inovatif dan menarik secara visual untuk berbagai produk/jasa. Tema harus menggambarkan konsep atau suasana. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan.`;
-                        break;
-                    case 'posterText':
-                        promptForSuggestion = productContext ?
-                            `Dengan produk utama "${productContext}", berikan tiga hingga lima contoh slogan atau kalimat promosi singkat, persuasif, dan menarik untuk poster iklan. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan.` :
-                            `Berikan tiga hingga lima contoh slogan atau kalimat promosi singkat, persuasif, dan menarik untuk poster iklan komersial. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan.`;
-                        break;
-                    default:
-                        loadingSpinner.style.display = 'none';
-                        return;
+                
+                const file = posterImageInput.files[0];
+                if (!file) {
+                    showToast('Silakan pilih gambar terlebih dahulu', 'error');
+                    return;
                 }
+                
+                analyzeImage(apiKey, file);
+            });
+            // --- Akhir Fitur Upload Gambar ---
+        });
+        
+        function generatePrompt() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const activeTab = document.querySelector('.nav-tabs .nav-link.active').id;
+            
+            // Validation
+            if (!apiKey) {
+                showToast('Silakan masukkan kunci API Gemini Anda', 'error');
+                return;
+            }
+            
+            if (activeTab === 'single-image-tab') {
+                generateSingleImagePrompt(apiKey);
+            } else if (activeTab === 'poster-tab') {
+                generatePosterPrompt(apiKey);
+            }
+        }
+        
+        function generateSingleImagePrompt(apiKey) {
+            const subject = document.getElementById('subject').value.trim();
+            const negativePrompt = document.getElementById('negativePrompt').value.trim(); 
+            const promptCount = document.getElementById('promptCount').value;
+            const activeStyle = document.querySelector('.specialization-chip.active').dataset.style;
+            
+            // Validation
+            if (!subject) {
+                showToast('Silakan masukkan subjek yang diinginkan', 'error');
+                return;
+            }
+            
+            // Show loading indicator
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('resultContainer').style.display = 'none';
+            
+            // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
+            const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount, negativePrompt); 
+            
+            // Call Gemini API
+            callGeminiAPI(apiKey, geminiPrompt)
+                .then(response => {
+                    displayResults(response, activeStyle, 'single');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Terjadi kesalahan saat menghasilkan prompt. Silakan coba lagi.', 'error');
+                })
+                .finally(() => {
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                });
+        }
+        
+        function generatePosterPrompt(apiKey) {
+            const posterProduct = document.getElementById('posterProduct').value.trim();
+            const posterTheme = document.getElementById('posterTheme').value.trim();
+            const posterText = document.getElementById('posterText').value.trim();
+            const posterStyle = document.getElementById('posterStyle').value;
+            const selectedCategory = document.querySelector('.poster-category-item.selected').dataset.category;
+            
+            // Validation
+            if (!posterProduct) {
+                showToast('Silakan masukkan produk/jasa yang dipromosikan', 'error');
+                return;
+            }
+            
+            if (!posterTheme) {
+                showToast('Silakan masukkan tema poster', 'error');
+                return;
+            }
+            
+            // Show loading indicator
+            document.getElementById('loadingIndicator').style.display = 'block';
+            document.getElementById('resultContainer').style.display = 'none';
+            
+            // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
+            const geminiPrompt = buildPosterPrompt(posterProduct, posterTheme, posterText, posterStyle, selectedCategory);
+            
+            // Call Gemini API
+            callGeminiAPI(apiKey, geminiPrompt)
+                .then(response => {
+                    displayResults(response, 'poster', 'poster');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Terjadi kesalahan saat menghasilkan prompt. Silakan coba lagi.', 'error');
+                })
+                .finally(() => {
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                });
+        }
+        
+        // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
+        function buildGeminiPrompt(subject, style, count, negativePrompt) {
+            let prompt = `#ROLE
+    
+You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who unlocks hyper-realistic, Vogue-worthy, professional magazine imagery, specifically for generating the most realistic, professional studio and magazine style creative prompts in the world that create text to AI images in tools like Midjourney, Freepik, Whisk, Google Gemini, Dreamina, Stable Diffusion, Leonardo AI and other AI Image Generator tools.
+#SPECIALIZATION
+But not only are you a specialist, you know all of the hidden secrets, tips and tricks for prompts.
+extreme photorealism
+professional magazine photoshoots
+editorial style award-winning photography
+professional, high-end cameras
+hasselblad award-winning photos
+#GOAL
+With your knowledge, please provide me with all of the hidden secrets and keywords to use in my prompts to generating extraordinary and unique AI images, including print styles, magazines, editorial keywords, the best professional photographers, etc.
+#OBJECTIVE
+Reveal other high-impact, high-quality "secret" keywords or tokens organized into clear categories. Also Generate photorealistic text-to-image prompts that look like the ultimate level of professional photoshoot realism.
+#PROMPT STRUCTURE MUST INCLUDE:
+professional camera body and lens (e.g., Canon R5, Leica SL2, Sony A7R V, Phase One IQ4)
+Specific lens focal length and aperture for shallow depth of field (e.g., 85mm f/1.2)
+Directional lighting setup (e.g., soft golden hour, backlight rim, beauty dish)
+Subject styling
+Background blur or setting (e.g., soft grey backdrop, luxury villa, blurred bokeh)
+Output specs: cinematic 16:9, photorealistic, ultra HD, editorial finish
+#RESPONSE STYLE
+Write in dense paragraph form (no bullet points) so it's copy-friendly.
+Bold each keyword or token the first time it appears, then follow with a colon, the effect, and the sample usage in parentheses).
+Keep each keyword and token on its own line for easy scanning
+#SPECIALIZATION ADDITION
+You are now adding new specializations to unlock more secret keywords and tokens to create these styles of photo:
+netflix tone and style
+korean drama tone and style
+K-Pop tone and style
+hollywood tone and style
+ESPN tone and style
+ESPN Sport tone and style
+National Geographic tone and style
+Magazine tone and style (e.g. vogue, W Magazine, and more magazine styles)
+#PROMPT STRUCTURE MUST INCLUDE (ADVANCED):
+professional camera body and camera lens
+Specific lens focal length and aperture for shallow depth of field
+lighting setup
+Subject styling
+background/location
+emotions
+magazine style
+photo/scene type
+make-up by
+hairdo by
+photo taken by
+color grading by
+hidden keywords and tokens from previous and added specializations
+Background blur or setting
+emotions
+tone
+photo/scene type
+make-up by
+hairdo by
+photo taken by
+color grading by
+theme packs
+Output specs: cinematic 16:9, photorealistic, ultra HD, editorial finish
+#TASK
+Create ${count} ready-to-use prompts for the following subject: ${subject}
+Each prompt should be in the style of ${style} (use the appropriate hidden keywords and tokens for this style).
+Each prompt must include all the elements from the advanced prompt structure and use hidden keywords and tokens.
+`;
+            // Tambahkan bagian prompt negatif jika ada isinya
+            if (negativePrompt) {
+                prompt += `\n#NEGATIVE_PROMPT\nAvoid generating the following in the image: ${negativePrompt}. Ensure no watermarks, text, blurry elements, or deformities are present.`;
+            }
+            return prompt;
+        }
+        
+        // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
+        function buildPosterPrompt(product, theme, text, style, category) {
+            // Deskripsi untuk AI, harus dalam Bahasa Inggris
+            const styleDescriptions = {
+                'colorful': 'colorful and attractive with high contrast',
+                'minimalist': 'minimalist and elegant with ample negative space',
+                'vintage': 'vintage and retro with old filters and textures',
+                'modern': 'modern and futuristic with clean design and bold typography',
+                'natural': 'natural and organic with nature elements and earthy colors'
+            };
+            
+            // Deskripsi untuk AI, harus dalam Bahasa Inggris
+            const categoryDescriptions = {
+                'makanan': 'food with a focus on texture and freshness',
+                'minuman': 'drinks with a focus on freshness and presentation',
+                'layanan': 'services with a focus on professionalism and customer satisfaction',
+                'produk': 'products with a focus on packaging and benefits',
+                'acara': 'events with a focus on atmosphere and activities',
+                'promo': 'promotions with a focus on discounts and special offers'
+            };
+            
+            // Tentukan teks promosi akhir. Jika input kosong, Gemini akan diminta untuk membuat.
+            const finalPromotionalText = text; // Simpan teks asli dari user
+            
+            // Ambil hasil analisis gambar jika ada
+            const analysisResultElement = document.getElementById('analysisResult');
+            let imageAnalysisText = '';
+            if (analysisResultElement.style.display !== 'none') {
+                imageAnalysisText = document.getElementById('analysisText').textContent;
+            }
+            
+            return `#ROLE
+    
+You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who specializes in creating hyper-realistic, professional advertising posters for promotional content, specifically for generating eye-catching commercial posters similar to high-end Indonesian food and service advertisements.
+#SPECIALIZATION
+You are an expert in creating visually striking promotional posters with clear product focus, compelling typography, and commercial appeal. You understand how to design posters that attract attention and communicate promotional messages effectively.
+#GOAL
+Create a comprehensive prompt for generating a professional advertising poster for the product "${product}" with the theme "${theme}". The poster should be in the category of ${category} (${categoryDescriptions[category]}) and have a ${styleDescriptions[style]} visual style.
+${imageAnalysisText ? `\n#IMAGE_ANALYSIS\nBased on the uploaded image analysis: ${imageAnalysisText}\n` : ''}
+#PROMPT STRUCTURE MUST INCLUDE:
+Product focus: Clear visual emphasis on the product "${product}" as the main visual subject, positioned as the star of the poster. The product should be the center of attention, occupying at least 40% of the poster space.
+Theme integration: Visual elements that represent the theme "${theme}" as an atmospheric or conceptual backdrop, enhancing but not overwhelming the product.
+Typography Hierarchy:
+- The product name, "${product}", must be the absolute largest and most dominant text element on the poster, serving as the main headline. It should be bold, in a modern sans-serif or elegant serif font, and centered or strategically placed for maximum impact.
+- The promotional text, "${finalPromotionalText}", should be a clear, concise, and eye-catching call-to-action or slogan, in a secondary size that is highly visible but clearly smaller than the product name. Use a complementary font style.
+- The theme, "${theme}", should be present as a supportive tagline or descriptive phrase, in a smaller, elegant font, perhaps at the top or bottom of the poster.
+Visual style: ${styleDescriptions[style]}
+Color scheme: Harmonious color palette that enhances the product appeal, with vibrant colors for the "colorful" style, or muted tones for "minimalist", etc. The color scheme should complement the product's natural colors.
+Composition: Balanced and dynamic layout, following the rule of thirds, with the product name and the product itself being the immediate focal points. Use leading lines to guide the viewer's eye.
+Lighting: Professional commercial studio lighting that highlights textures and makes the product look irresistibly appealing. Use softbox lighting to eliminate harsh shadows.
+Background: A complementary background that supports the theme without distracting from the product or its name. Use subtle gradients or textures.
+Additional elements: Any supporting visual elements that enhance the theme and category (e.g., coffee beans for coffee, abstract lines for adventure). These elements should be secondary and not compete with the product.
+Text elements: Critically important: Ensure the exact original Indonesian text for the product name ("${product}"), the theme ("${theme}"), and the promotional text ("${finalPromotionalText}") is rendered directly as visible text on the poster. DO NOT TRANSLATE THESE TEXTS. If the promotional text input ("${finalPromotionalText}") is empty, then generate an appropriate, concise, and engaging Indonesian promotional text for the poster.
+Output specs: High resolution (4K), commercial quality, suitable for social media and large-scale print advertising, ensuring text is crisp and clear. The aspect ratio should be 3:4 for a standard poster.
+#RESPONSE STYLE
+Write in dense paragraph form (no bullet points) so it's copy-friendly.
+Include specific details about the product placement, explicit typography hierarchy (product name largest, then promotional text, then theme/tagline), and visual elements.
+Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster without translation.
+#TASK
+Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster, ensuring the product name ("${product}") is the largest and most prominent text. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.
+`;
+        }
+        
+        // --- Fungsi Baru untuk Saran AI ---
+        async function getAISuggestion(targetId) {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            if (!apiKey) {
+                showToast('Silakan masukkan kunci API Gemini Anda untuk mendapatkan saran.', 'error');
+                return;
+            }
 
-                try {
-                    const suggestion = await callGeminiAPI(apiKey, promptForSuggestion);
-                    const suggestionsArray = suggestion.split(',').map(s => s.trim().replace(/^"|"$/g, '')).filter(s => s); // Clean quotes and empty strings
-                    
-                    suggestionTextElem.innerHTML = ''; // Clear before adding new suggestions
-                    if (suggestionsArray.length > 0) {
-                        suggestionsArray.forEach(s => {
-                            const span = document.createElement('span');
-                            span.textContent = s;
-                            span.addEventListener('click', () => {
-                                document.getElementById(targetId).value = s;
-                                clearAISuggestion(targetId);
-                            });
-                            suggestionTextElem.appendChild(span);
-                        });
-                        showToast('Saran AI berhasil didapatkan!', 'success');
-                    } else {
-                        suggestionTextElem.textContent = 'Tidak ada saran yang ditemukan.';
-                    }
-                } catch (error) {
-                    console.error('Error fetching AI suggestion:', error);
-                    showToast('Gagal mendapatkan saran AI. Periksa Kunci API Anda.', 'error');
-                    suggestionArea.classList.remove('active');
-                } finally {
+            const suggestionArea = document.getElementById(`suggestion-${targetId}`);
+            const suggestionTextElem = suggestionArea.querySelector('.suggestion-text');
+            const useButton = suggestionArea.querySelector('.btn-use-suggestion');
+            const loadingSpinner = suggestionArea.querySelector('.suggestion-loading');
+
+            suggestionArea.classList.remove('active');
+            suggestionTextElem.innerHTML = ''; // Gunakan innerHTML karena akan ada banyak span
+            useButton.style.display = 'none'; // Tombol 'Gunakan' disembunyikan untuk multiple choices
+            loadingSpinner.style.display = 'block';
+
+            // Dapatkan konteks dari input lain untuk saran yang lebih relevan
+            let context = '';
+            if (targetId === 'posterTheme') {
+                const product = document.getElementById('posterProduct').value.trim();
+                if (product) {
+                    context = `Produk yang dipromosikan: "${product}". `;
+                }
+            } else if (targetId === 'posterText') {
+                const product = document.getElementById('posterProduct').value.trim();
+                const theme = document.getElementById('posterTheme').value.trim();
+                if (product) context += `Produk: "${product}". `;
+                if (theme) context += `Tema: "${theme}". `;
+            } else if (targetId === 'subject') {
+                // Untuk subject, mungkin tidak ada konteks lain, jadi biarkan kosong
+            } else if (targetId === 'negativePrompt') {
+                // Untuk negativePrompt, tidak perlu konteks
+            } else if (targetId === 'posterProduct') {
+                // Untuk posterProduct, tidak ada konteks lain
+            }
+
+            let promptForSuggestion = '';
+            switch (targetId) {
+                case 'subject':
+                    promptForSuggestion = `${context}Berikan tiga hingga lima ide subjek yang sangat fotorealistik dan menarik untuk gambar tunggal bergaya editorial/majalah/sinematik, cocok untuk AI image generator. Setiap ide harus lengkap, spesifik, dan menggambarkan adegan atau objek dengan jelas. Fokus pada subjek yang berpotensi memiliki dampak visual tinggi. Berikan ide-ide ini dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
+                    break;
+                case 'negativePrompt':
+                    promptForSuggestion = `Berikan daftar lima hingga tujuh kata kunci negatif yang paling efektif dan umum digunakan dalam prompt AI image generation untuk secara spesifik menghindari cacat seperti anatomi yang salah, teks yang tidak diinginkan, tanda air, buram, distorsi, artefak, kelebihan jari, atau kualitas rendah secara umum. Berikan hanya daftar kata kunci tersebut dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
+                    break;
+                case 'posterProduct':
+                    promptForSuggestion = `Berikan tiga hingga lima nama produk atau jasa yang kreatif, berkesan, dan cocok untuk poster promosi yang eye-catching, dari berbagai kategori seperti makanan, minuman, teknologi, fashion, atau layanan. Nama-nama ini harus menarik dan mudah diingat. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
+                    break;
+                case 'posterTheme':
+                    promptForSuggestion = `${context}Berikan tiga hingga lima ide tema poster promosi yang inovatif, berdaya jual tinggi, dan menarik secara visual untuk produk yang disebutkan. Tema harus menggambarkan konsep atau suasana, bukan hanya deskripsi langsung, dan cocok untuk AI image generation. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
+                    break;
+                case 'posterText':
+                    promptForSuggestion = `${context}Berikan tiga hingga lima contoh slogan atau kalimat promosi singkat, lugas, persuasif, dan sangat menarik untuk poster iklan komersial. Kalimat-kalimat ini harus segera menarik perhatian dan mendorong tindakan pembeli. Berikan dalam bahasa Indonesia, dipisahkan dengan tanda koma. Jangan ada teks tambahan atau pendahuluan.`;
+                    break;
+                default:
+                    showToast('Target saran tidak dikenal.', 'error');
                     loadingSpinner.style.display = 'none';
-                }
-            }
-            
-            function clearAISuggestion(targetId) {
-                const suggestionArea = document.getElementById(`suggestion-${targetId}`);
-                if (suggestionArea) {
-                    suggestionArea.classList.remove('active');
-                    suggestionArea.querySelector('.suggestion-text').innerHTML = '';
-                    suggestionArea.querySelector('.suggestion-loading').style.display = 'none';
-                }
+                    return;
             }
 
-            // --- REVISED: Central API Call Function (Handles Text & Image) ---
-            async function callGeminiAPI(apiKey, prompt, imageData = null) {
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
-
-                const parts = [{ text: prompt }];
-                if (imageData) {
-                    parts.push({
-                        inline_data: {
-                            mime_type: imageData.mimeType,
-                            data: imageData.data
-                        }
+            try {
+                const suggestion = await callGeminiAPI(apiKey, promptForSuggestion);
+                // Pisahkan saran menjadi array jika ada beberapa, lalu tampilkan sebagai chip
+                const suggestionsArray = suggestion.split(',').map(s => s.trim()).filter(s => s.length > 0);
+                
+                if (suggestionsArray.length > 0) {
+                    suggestionTextElem.innerHTML = ''; // Kosongkan dulu
+                    suggestionsArray.forEach(s => {
+                        const span = document.createElement('span');
+                        span.textContent = s;
+                        span.addEventListener('click', () => {
+                            document.getElementById(targetId).value = s;
+                            clearAISuggestion(targetId);
+                        });
+                        suggestionTextElem.appendChild(span);
                     });
+                    
+                    suggestionArea.classList.add('active');
+                } else {
+                    suggestionTextElem.textContent = 'Tidak ada saran yang ditemukan.';
+                    suggestionArea.classList.add('active');
                 }
+                showToast('Saran AI berhasil didapatkan!', 'success');
+            } catch (error) {
+                console.error('Error fetching AI suggestion:', error);
+                showToast('Gagal mendapatkan saran AI. Pastikan kunci API Anda benar dan coba lagi.', 'error');
+            } finally {
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        function clearAISuggestion(targetId) {
+            const suggestionArea = document.getElementById(`suggestion-${targetId}`);
+            if (suggestionArea) {
+                suggestionArea.classList.remove('active');
+                suggestionArea.querySelector('.suggestion-text').innerHTML = ''; // Gunakan innerHTML karena mungkin ada span
+                suggestionArea.querySelector('.btn-use-suggestion').style.display = 'none';
+                suggestionArea.querySelector('.suggestion-loading').style.display = 'none';
+            }
+        }
+        // --- Akhir Fungsi Baru untuk Saran AI ---
+        
+        // --- Fungsi Analisis Gambar ---
+        async function analyzeImage(apiKey, file) {
+            const analysisResult = document.getElementById('analysisResult');
+            const analysisText = document.getElementById('analysisText');
+            const analyzeImageBtn = document.getElementById('analyzeImageBtn');
+            
+            // Tampilkan loading
+            const originalText = analyzeImageBtn.innerHTML;
+            analyzeImageBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Menganalisis...';
+            analyzeImageBtn.disabled = true;
+            
+            try {
+                // Convert image to base64
+                const base64Image = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result.split(',')[1]); // Get base64 part
+                    reader.readAsDataURL(file);
+                });
+
+                const prompt = `Analyze this product image in detail and provide suggestions for creating a professional advertising poster. Your response should include:
+
+1. A detailed description of the product's appearance, key features, colors, textures, and distinctive elements.
+2. A suggested product name (in Indonesian) that would be suitable for this product.
+3. A suggested theme (in Indonesian) that would work well for promoting this product.
+4. A suggested promotional text/slogan (in Indonesian) that would be effective for this product.
+
+Format your response as JSON with the following structure:
+{
+  "description": "Detailed description of the product",
+  "suggestedProduct": "Suggested product name in Indonesian",
+  "suggestedTheme": "Suggested theme in Indonesian",
+  "suggestedText": "Suggested promotional text in Indonesian"
+}`;
+
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
                 const response = await fetch(url, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify({
-                        contents: [{ parts: parts }],
-                        // Add safety settings to reduce blocking
-                        "safetySettings": [
-                            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-                            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-                            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-                            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
-                        ]
+                        contents: [{
+                            parts: [
+                                { text: prompt },
+                                {
+                                    inline_data: {
+                                        mime_type: file.type,
+                                        data: base64Image
+                                    }
+                                }
+                            ]
+                        }]
                     })
                 });
 
-                const responseData = await response.json();
-
                 if (!response.ok) {
-                    throw new Error(responseData.error?.message || 'Gagal berkomunikasi dengan API');
+                    const errorData = await response.json();
+                    throw new Error(errorData.error.message || 'Failed to get image description');
                 }
 
-                if (!responseData.candidates || responseData.candidates[0].finishReason === "SAFETY") {
-                    throw new Error('Respons diblokir karena alasan keamanan. Coba ubah input Anda.');
+                const data = await response.json();
+                let responseText = data.candidates[0].content.parts[0].text;
+                responseText = responseText.replace(/```(?:json)?\n?([\s\S]*?)```/g, '$1').trim();
+                
+                // Parse JSON response
+                let analysisData;
+                try {
+                    analysisData = JSON.parse(responseText);
+                } catch (e) {
+                    // If JSON parsing fails, try to extract information manually
+                    analysisData = extractAnalysisData(responseText);
                 }
                 
-                if (!responseData.candidates[0].content || !responseData.candidates[0].content.parts) {
-                     throw new Error('Respons API tidak valid atau kosong.');
-                }
-
-                let generatedText = responseData.candidates[0].content.parts[0].text;
-                return generatedText.replace(/```(?:[a-z]+)?\n([\s\S]*?)```/g, '$1').trim();
-            }
-
-            // --- PROMPT ENGINEERING LOGIC ---
-            function buildGeminiPrompt(subject, style, count, negativePrompt) {
-                let basePrompt = `#ROLE You are "ROEMAH PROMPT INDONESIA", an elite prompt-engineering savant for hyper-realistic, professional magazine imagery. Your specialty is creating prompts for AI Image Generators that result in Vogue-worthy, editorial-style photos. #SPECIALIZATION You know all the hidden secrets, tips, and tricks for extreme photorealism, professional photoshoots, and award-winning photography. You utilize keywords for high-end cameras like Hasselblad, Canon, Leica, and Sony. #GOAL Generate extraordinary and unique AI image prompts, including print styles, magazines, editorial keywords, famous photographers, etc. #PROMPT STRUCTURE MUST INCLUDE: Professional camera and lens (e.g., Canon R5 with 85mm f/1.2, Leica SL2, Phase One IQ4). Specific directional lighting setup (e.g., soft golden hour, backlight rim, beauty dish). Subject styling, background details (e.g., soft grey backdrop, blurred bokeh), and emotional tone. Output specs: cinematic 16:9, photorealistic, ultra HD, editorial finish. #RESPONSE STYLE Write in dense paragraph form (no bullet points), ready for copy-pasting. #SPECIALIZATION ADDITION Your expertise now includes: Netflix tone, Korean Drama style, K-Pop aesthetic, Hollywood glamour, ESPN sports action, and National Geographic documentary style. #ADVANCED PROMPT STRUCTURE MUST INCLUDE: camera body/lens, focal length/aperture, lighting, subject styling, background/location, emotions, makeup/hair stylist credits, photographer credit, specific color grading, and theme packs. #TASK Create ${count} ready-to-use prompts for the subject: "${subject}". Each prompt must be in the style of "${style}", using all elements from the advanced structure and relevant hidden keywords.`;
-                if (negativePrompt) {
-                    basePrompt += `\n#NEGATIVE_PROMPT\nEnsure the image avoids: ${negativePrompt}. Specifically, no watermarks, text, blurry elements, or physical deformities.`;
-                }
-                return basePrompt;
-            }
-
-            function buildPosterPrompt(product, theme, text, style, category) {
-                const styleDescriptions = {'colorful': 'vibrant, high-contrast, and eye-catching','minimalist': 'minimalist, elegant, with ample negative space and clean typography','vintage': 'vintage and retro, using old film textures and faded colors','modern': 'modern, sleek, and futuristic with bold geometric shapes','natural': 'natural and organic, featuring earthy tones and nature-inspired elements'};
-                const finalPromotionalText = text;
-                return `#ROLE\nYou are "PROMPT STUDIO ID", an expert prompt engineer for hyper-realistic commercial advertising posters for the Indonesian market.\n\n#OBJECTIVE\nGenerate ONE expert-level prompt for an AI image generator to create a professional advertising poster.\n\n#INPUTS\n- Product Name: "${product}"\n- Poster Theme: "${theme}"\n- Promotional Text: "${finalPromotionalText}" (If empty, create a compelling one in Indonesian).\n- Visual Style: ${styleDescriptions[style]}\n- Category: ${category}\n\n#PROMPT STRUCTURE (STRICTLY FOLLOW THIS):\nCreate a single, dense paragraph. Start with the overall scene and composition. Describe the main product, "${product}", in irresistible detail, making it the clear hero and focal point. Describe the background and atmosphere to support the theme. Specify the ${styleDescriptions[style]} style through color palette and design elements. **Crucially, instruct the AI to render the following text directly on the poster (DO NOT TRANSLATE):** The main headline text must be '${product}' (largest, boldest font). The secondary call-to-action text should be '${finalPromotionalText}'. A smaller, elegant tagline text should be '${theme}'. Specify professional lighting (e.g., 'dramatic studio lighting with a soft key light') to make the product pop. End with essential keywords: "commercial product photography, advertising poster, hyper-realistic, ultra-detailed, sharp focus, 8K, professional color grading, editorial quality, Indonesian market".\n\n#TASK\nCreate the single, comprehensive prompt based on all rules and inputs.`;
-            }
-
-            function buildImageToPrompt(product, theme, text) {
-                const finalPromotionalText = text;
-                return `#ROLE\nYou are a "VISUAL PROMPT ARCHITECT", an AI expert analyzing a reference image to create a new, professional advertising poster prompt.\n\n#OBJECTIVE\nAnalyze the provided image. Generate ONE expert-level prompt for a new poster that masterfully adapts the *visual style, color palette, lighting, and composition* of the reference image, but features the *new product and text* specified by the user.\n\n#CRITICAL INSTRUCTIONS\n1.  **Analyze and Adapt, Don't Copy:** Your primary task is to understand the *essence* of the reference image (e.g., is it dark and moody? bright and airy? minimalist? cluttered and energetic?) and apply that essence to the new prompt. Do not describe the old subject.\n2.  **New Hero Subject:** The new main subject is "${product}". It must be the focal point.\n3.  **New Text:** You must use the new text provided. Do not use any text from the reference image.\n\n#PROMPT STRUCTURE (STRICTLY FOLLOW THIS):\nCreate a single, dense paragraph. Begin by describing the overall composition and atmosphere for a new poster, heavily inspired by the reference image's style. Then, describe the new main product, "${product}", positioned as the hero of the shot, detailed to look highly appealing. The background, lighting scheme (e.g., 'soft, diffused side-lighting'), and color palette should be directly inspired by the provided image. **Crucially, instruct the AI to render the following NEW text on the poster (DO NOT TRANSLATE):** The Main Headline text must be '${product}' (in a very large, dominant font). The secondary Call-to-Action text should be '${finalPromotionalText}'. A smaller, subtle Tagline text should be '${theme}'. Conclude with essential keywords: "commercial product photography, advertising poster, hyper-realistic, ultra-detailed, sharp focus, 8K, professional color grading, editorial quality, style adapted from a visual reference".\n\n#TASK\nAnalyze the provided image and user's text inputs. Create the single, comprehensive prompt following all rules.`;
-            }
-
-            function displayResults(response, style, type) {
-                const resultContent = document.getElementById('resultContent');
-                resultContent.innerHTML = '';
-
-                if (type === 'single') {
-                    const prompts = response.split(/Prompt \d+:/).filter(p => p.trim());
-                    prompts.forEach((prompt, index) => {
-                        createResultBox(`Prompt ${index + 1} - Gaya ${getStyleName(style)}`, prompt.trim());
-                    });
-                } else if (type === 'poster') {
-                    const title = style === 'poster-from-image' ?
-                        '<i class="fas fa-camera-retro me-2"></i> Prompt Poster (dari Gambar)' :
-                        '<i class="fas fa-ad me-2"></i> Prompt Poster Profesional';
-                    createResultBox(title, response.trim());
-                }
+                // Otomatis isi field-field dengan hasil analisis
+                document.getElementById('posterProduct').value = analysisData.suggestedProduct;
+                document.getElementById('posterTheme').value = analysisData.suggestedTheme;
+                document.getElementById('posterText').value = analysisData.suggestedText;
                 
-                document.getElementById('resultContainer').style.display = 'block';
-                document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
-                showToast('Prompt berhasil dihasilkan!', 'success');
+                // Tampilkan hasil analisis
+                analysisText.innerHTML = `
+                    <div class="mb-3">
+                        <strong>Deskripsi Produk:</strong> ${analysisData.description}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Produk/Jasa yang Dipromosikan:</strong> ${analysisData.suggestedProduct}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Tema Poster:</strong> ${analysisData.suggestedTheme}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Teks Promosi:</strong> ${analysisData.suggestedText}
+                    </div>
+                    <div class="alert alert-success mt-3">
+                        <i class="fas fa-check-circle me-2"></i> Field telah diisi otomatis berdasarkan analisis gambar
+                    </div>
+                `;
+                analysisResult.style.display = 'block';
+                
+                showToast('Analisis gambar berhasil! Field telah diisi otomatis.', 'success');
+            } catch (error) {
+                console.error('Error analyzing image:', error);
+                showToast('Gagal menganalisis gambar. Pastikan kunci API Anda benar dan coba lagi.', 'error');
+            } finally {
+                // Kembalikan tombol ke keadaan semula
+                analyzeImageBtn.innerHTML = originalText;
+                analyzeImageBtn.disabled = false;
             }
+        }
 
-            function createResultBox(titleText, contentText) {
-                const resultContent = document.getElementById('resultContent');
+        // Fungsi untuk mengekstrak data analisis jika JSON parsing gagal
+        function extractAnalysisData(text) {
+            const result = {
+                description: '',
+                suggestedProduct: '',
+                suggestedTheme: '',
+                suggestedText: ''
+            };
+            
+            // Extract description
+            const descMatch = text.match(/"description":\s*"([^"]+)"/);
+            if (descMatch) result.description = descMatch[1];
+            
+            // Extract suggested product
+            const productMatch = text.match(/"suggestedProduct":\s*"([^"]+)"/);
+            if (productMatch) result.suggestedProduct = productMatch[1];
+            
+            // Extract suggested theme
+            const themeMatch = text.match(/"suggestedTheme":\s*"([^"]+)"/);
+            if (themeMatch) result.suggestedTheme = themeMatch[1];
+            
+            // Extract suggested text
+            const textMatch = text.match(/"suggestedText":\s*"([^"]+)"/);
+            if (textMatch) result.suggestedText = textMatch[1];
+            
+            // If any field is empty, try alternative extraction
+            if (!result.description) {
+                const descSection = text.match(/description[^}]*?[:\s]+([^,}]+)/i);
+                if (descSection) result.description = descSection[1].replace(/"/g, '').trim();
+            }
+            
+            if (!result.suggestedProduct) {
+                const productSection = text.match(/suggestedProduct[^}]*?[:\s]+([^,}]+)/i);
+                if (productSection) result.suggestedProduct = productSection[1].replace(/"/g, '').trim();
+            }
+            
+            if (!result.suggestedTheme) {
+                const themeSection = text.match(/suggestedTheme[^}]*?[:\s]+([^,}]+)/i);
+                if (themeSection) result.suggestedTheme = themeSection[1].replace(/"/g, '').trim();
+            }
+            
+            if (!result.suggestedText) {
+                const textSection = text.match(/suggestedText[^}]*?[:\s]+([^,}]+)/i);
+                if (textSection) result.suggestedText = textSection[1].replace(/"/g, '').trim();
+            }
+            
+            return result;
+        }
+        // --- Akhir Fungsi Analisis Gambar ---
+        
+        async function callGeminiAPI(apiKey, prompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }]
+                })
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error.message || 'Gagal menghasilkan prompt');
+            }
+            
+            const data = await response.json();
+            // Pastikan kita mengambil teks yang bersih dari respons Gemini.
+            // Kadang Gemini bisa menyertakan markdown atau karakter ekstra.
+            let generatedText = data.candidates[0].content.parts[0].text;
+            // Hapus karakter markdown awal/akhir jika ada (misal: "```text\n", "```")
+            generatedText = generatedText.replace(/```(?:text|json|yaml|php|bash|javascript|html)?\n([\s\S]*?)```/g, '$1').trim();
+            return generatedText;
+        }
+        
+        function displayResults(response, style, type) {
+            const resultContainer = document.getElementById('resultContainer');
+            const resultContent = document.getElementById('resultContent');
+            
+            // Clear previous results
+            resultContent.innerHTML = '';
+            
+            if (type === 'single') {
+                // Split the response into individual prompts
+                // Asumsi respons Gemini akan menggunakan "Prompt 1:", "Prompt 2:", dll.
+                const prompts = response.split(/Prompt \d+:/).filter(prompt => prompt.trim() !== '');
+                
+                // Buat kotak hasil untuk setiap prompt
+                prompts.forEach((prompt, index) => {
+                    const promptNumber = index + 1;
+                    const resultBox = document.createElement('div');
+                    resultBox.className = 'result-box';
+                    resultBox.textContent = prompt.trim();
+                    
+                    const resultHeader = document.createElement('div');
+                    resultHeader.className = 'result-header';
+                    
+                    const resultTitle = document.createElement('div');
+                    resultTitle.className = 'result-title';
+                    // Teks UI tetap Bahasa Indonesia
+                    resultTitle.innerHTML = `<i class="fas fa-file-alt me-2"></i> Prompt ${promptNumber} - Gaya ${getStyleName(style)}`;
+                    
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'btn btn-sm btn-copy';
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // Teks UI tetap Bahasa Indonesia
+                    copyButton.addEventListener('click', () => copyToClipboard(prompt.trim()));
+                    
+                    resultHeader.appendChild(resultTitle);
+                    resultHeader.appendChild(copyButton);
+                    
+                    const promptContainer = document.createElement('div');
+                    promptContainer.appendChild(resultHeader);
+                    promptContainer.appendChild(resultBox);
+                    
+                    resultContent.appendChild(promptContainer);
+                });
+            } else if (type === 'poster') {
+                // Untuk poster, kita akan membuat satu kotak hasil
+                const resultBox = document.createElement('div');
+                resultBox.className = 'result-box';
+                resultBox.textContent = response.trim();
+                
                 const resultHeader = document.createElement('div');
                 resultHeader.className = 'result-header';
                 
                 const resultTitle = document.createElement('div');
                 resultTitle.className = 'result-title';
-                resultTitle.innerHTML = titleText;
-
+                // Teks UI tetap Bahasa Indonesia
+                resultTitle.innerHTML = `<i class="fas fa-ad me-2"></i> Prompt untuk Poster Promosi`;
+                
                 const copyButton = document.createElement('button');
                 copyButton.className = 'btn btn-sm btn-copy';
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin';
-                copyButton.addEventListener('click', () => copyToClipboard(contentText));
+                copyButton.innerHTML = '<i class="fas fa-copy"></i> Salin'; // Teks UI tetap Bahasa Indonesia
+                copyButton.addEventListener('click', () => copyToClipboard(response.trim()));
                 
                 resultHeader.appendChild(resultTitle);
                 resultHeader.appendChild(copyButton);
-
-                const resultBox = document.createElement('div');
-                resultBox.className = 'result-box';
-                resultBox.textContent = contentText;
-
+                
                 const promptContainer = document.createElement('div');
                 promptContainer.appendChild(resultHeader);
                 promptContainer.appendChild(resultBox);
+                
                 resultContent.appendChild(promptContainer);
             }
-
-            function getStyleName(style) {
-                const names = {'magazine': 'Magazine','netflix': 'Netflix','korean': 'Korean Drama','kpop': 'K-Pop','hollywood': 'Hollywood','espn': 'ESPN','natgeo': 'National Geographic'};
-                return names[style] || style;
+            
+            // Tampilkan container hasil
+            resultContainer.style.display = 'block';
+            
+            // Gulir ke hasil
+            resultContainer.scrollIntoView({ behavior: 'smooth' });
+            
+            showToast('Prompt berhasil dihasilkan!', 'success'); // Teks UI tetap Bahasa Indonesia
+        }
+        
+        // Nama gaya umumnya adalah istilah Bahasa Inggris, jadi ini bisa tetap seperti adanya
+        function getStyleName(style) {
+            const styleNames = {
+                'magazine': 'Magazine',
+                'netflix': 'Netflix',
+                'korean': 'Korean Drama',
+                'kpop': 'K-Pop',
+                'hollywood': 'Hollywood',
+                'espn': 'ESPN',
+                'natgeo': 'National Geographic'
+            };
+            return styleNames[style] || style;
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Prompt berhasil disalin!', 'success'); // Teks UI tetap Bahasa Indonesia
+            }).catch(err => {
+                showToast('Gagal menyalin prompt. Silakan salin secara manual.', 'error'); // Teks UI tetap Bahasa Indonesia
+            });
+        }
+        
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+            
+            if (type === 'success') {
+                toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            } else if (type === 'error') {
+                toast.style.backgroundColor = '#f44336';
+                toast.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            } else {
+                toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
             }
-
-            function copyToClipboard(text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showToast('Prompt berhasil disalin!', 'success');
-                }).catch(err => {
-                    showToast('Gagal menyalin prompt.', 'error');
-                });
-            }
-
-            function showToast(message, type = 'success') {
-                const toastContainer = document.getElementById('toastContainer');
-                const toast = document.createElement('div');
-                toast.className = 'custom-toast';
-                
-                if (type === 'error') {
-                    toast.style.backgroundColor = '#f44336';
-                    toast.innerHTML = `<i class="fas fa-exclamation-circle me-2"></i> ${message}`;
-                } else if (type === 'info') {
-                     toast.style.backgroundColor = '#2196F3'; // Blue for info
-                     toast.innerHTML = `<i class="fas fa-info-circle me-2"></i> ${message}`;
-                } else {
-                    toast.innerHTML = `<i class="fas fa-check-circle me-2"></i> ${message}`;
-                }
-
-                toastContainer.appendChild(toast);
+            
+            toastContainer.appendChild(toast);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
                 setTimeout(() => {
-                    toast.style.opacity = '0';
-                    setTimeout(() => toast.remove(), 300);
-                }, 4000); // Increased duration for info toasts
-            }
-        });
+                    toastContainer.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
