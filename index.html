@@ -16,6 +16,8 @@
             --success-color: #4caf50;
             --warning-color: #ff9800;
             --poster-color: #e91e63;
+            --ai-model-color: #00acc1;
+            --image-bg-color: #f5f5f5;
         }
         
         body {
@@ -118,6 +120,18 @@
         .btn-copy:hover {
             background-color: var(--secondary-color);
             color: white;
+        }
+        
+        .btn-generate-image {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+            margin-top: 0.5rem;
+        }
+        
+        .btn-generate-image:hover {
+            background-color: #388e3c;
+            border-color: #388e3c;
         }
         
         .result-container {
@@ -535,6 +549,214 @@
             margin-bottom: 0.5rem;
             font-style: italic;
         }
+        
+        /* Gaya untuk pilihan model AI */
+        .ai-model-container {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ai-model-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-model-header i {
+            color: var(--ai-model-color);
+            margin-right: 0.5rem;
+        }
+        
+        .ai-model-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .ai-model-chip {
+            background-color: white;
+            border: 2px solid var(--ai-model-color);
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-model-chip.active {
+            background-color: var(--ai-model-color);
+            color: white;
+        }
+        
+        .ai-model-description {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Gaya untuk fitur lanjutan */
+        .advanced-features {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .advanced-features h6 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .advanced-features p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        
+        .feature-toggle {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .feature-toggle input {
+            margin-right: 0.5rem;
+        }
+        
+        /* Gaya untuk hasil generate image */
+        .image-result-container {
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .image-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .image-result-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .image-count-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .image-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--image-bg-color);
+            aspect-ratio: 1/1;
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .image-loading .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border-width: 3px;
+        }
+        
+        .image-loading p {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--dark-color);
+        }
+        
+        .image-actions-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 0.5rem;
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-item:hover .image-actions-overlay {
+            opacity: 1;
+        }
+        
+        .btn-download-image {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-download-image:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .prompt-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .image-generation-options {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .error-message {
+            padding: 0.75rem;
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #d32f2f;
+        }
     </style>
 </head>
 <body>
@@ -561,6 +783,26 @@
                     </button>
                 </div>
                 <small class="text-muted">Kunci API Anda akan disimpan secara lokal di browser Anda.</small>
+            </div>
+            
+            <div class="ai-model-container">
+                <div class="ai-model-header">
+                    <i class="fas fa-robot"></i>
+                    <strong>Model AI untuk Generate Gambar</strong>
+                </div>
+                <p class="mb-2">Pilih model AI yang akan digunakan untuk menghasilkan gambar.</p>
+                <div class="ai-model-options">
+                    <div class="ai-model-chip active" data-model="imagen4">
+                        <i class="fas fa-image me-1"></i> Imagen 4
+                    </div>
+                    <div class="ai-model-chip" data-model="gemini25flash">
+                        <i class="fas fa-bolt me-1"></i> Gemini 2.5 Flash Image
+                    </div>
+                </div>
+                <div class="ai-model-description">
+                    <strong>Imagen 4:</strong> Model generatif gambar terbaru dari Google dengan kualitas ultra-realistis.<br>
+                    <strong>Gemini 2.5 Flash Image:</strong> Model multimodal yang dapat memahami gambar dan teks secara bersamaan.
+                </div>
             </div>
             
             <div class="tab-container">
@@ -615,6 +857,35 @@
                             </div>
                         </div>
                         
+                        <!-- Upload Gambar Referensi -->
+                        <div class="mb-3">
+                            <label class="form-label">Upload Gambar Referensi (Opsional)</label>
+                            <div class="image-upload-container">
+                                <input type="file" id="referenceImage" accept="image/*" style="display: none;">
+                                <label for="referenceImage" class="btn btn-outline-primary">
+                                    <i class="fas fa-upload me-2"></i> Pilih Gambar
+                                </label>
+                                <p class="mt-2 mb-0 text-muted">Upload gambar referensi untuk analisis otomatis</p>
+                            </div>
+                            
+                            <div class="image-preview-container" id="referenceImagePreviewContainer">
+                                <img id="referenceImagePreview" class="image-preview" src="" alt="Preview">
+                                <div class="image-actions">
+                                    <button type="button" class="btn btn-sm btn-analyze" id="analyzeReferenceImageBtn">
+                                        <i class="fas fa-search me-1"></i> Analisis Gambar
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" id="removeReferenceImageBtn">
+                                        <i class="fas fa-trash me-1"></i> Hapus
+                                    </button>
+                                </div>
+                                
+                                <div class="analysis-result" id="referenceAnalysisResult">
+                                    <h6><i class="fas fa-check-circle me-1"></i> Hasil Analisis Gambar</h6>
+                                    <div id="referenceAnalysisText"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="mb-3">
                             <label class="form-label">Gaya Visual</label>
                             <div class="specialization-options">
@@ -650,6 +921,15 @@
                                 <option value="3" selected>3 Prompt</option>
                                 <option value="5">5 Prompt</option>
                             </select>
+                        </div>
+                        
+                        <div class="advanced-features">
+                            <h6><i class="fas fa-cogs me-1"></i> Fitur Lanjutan</h6>
+                            <div class="feature-toggle">
+                                <input type="checkbox" id="smartEnhancement" checked>
+                                <label for="smartEnhancement">Peningkatan Prompt Cerdas</label>
+                            </div>
+                            <p class="mt-2">Aktifkan fitur ini untuk meningkatkan kualitas prompt secara otomatis berdasarkan analisis AI.</p>
                         </div>
                     </div>
                     
@@ -787,6 +1067,15 @@
                                     <p>Poster acara festival dengan elemen produk utama</p>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <div class="advanced-features">
+                            <h6><i class="fas fa-cogs me-1"></i> Fitur Lanjutan</h6>
+                            <div class="feature-toggle">
+                                <input type="checkbox" id="autoTextGeneration" checked>
+                                <label for="autoTextGeneration">Generasi Teks Otomatis</label>
+                            </div>
+                            <p class="mt-2">Aktifkan fitur ini untuk menghasilkan teks promosi secara otomatis jika tidak diisi.</p>
                         </div>
                     </div>
                     
@@ -966,6 +1255,17 @@
                 localStorage.setItem('geminiApiKey', this.value);
             });
             
+            // Handle AI model selection
+            const aiModelChips = document.querySelectorAll('.ai-model-chip');
+            aiModelChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    // Remove active class from all chips
+                    aiModelChips.forEach(c => c.classList.remove('active'));
+                    // Add active class to clicked chip
+                    this.classList.add('active');
+                });
+            });
+            
             // Handle specialization chip selection
             const specializationChips = document.querySelectorAll('.specialization-chip');
             specializationChips.forEach(chip => {
@@ -1018,7 +1318,7 @@
             });
             // --- Akhir Fitur Baru ---
             
-            // --- Fitur Upload Gambar ---
+            // --- Fitur Upload Gambar untuk Poster ---
             const posterImageInput = document.getElementById('posterImage');
             const imagePreviewContainer = document.getElementById('imagePreviewContainer');
             const imagePreview = document.getElementById('imagePreview');
@@ -1059,14 +1359,60 @@
                     return;
                 }
                 
-                analyzeImage(apiKey, file);
+                analyzeImage(apiKey, file, 'poster');
             });
-            // --- Akhir Fitur Upload Gambar ---
+            // --- Akhir Fitur Upload Gambar untuk Poster ---
+            
+            // --- Fitur Upload Gambar Referensi untuk Gambar Tunggal ---
+            const referenceImageInput = document.getElementById('referenceImage');
+            const referenceImagePreviewContainer = document.getElementById('referenceImagePreviewContainer');
+            const referenceImagePreview = document.getElementById('referenceImagePreview');
+            const removeReferenceImageBtn = document.getElementById('removeReferenceImageBtn');
+            const analyzeReferenceImageBtn = document.getElementById('analyzeReferenceImageBtn');
+            const referenceAnalysisResult = document.getElementById('referenceAnalysisResult');
+            const referenceAnalysisText = document.getElementById('referenceAnalysisText');
+            
+            referenceImageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        referenceImagePreview.src = e.target.result;
+                        referenceImagePreviewContainer.style.display = 'block';
+                        referenceAnalysisResult.style.display = 'none';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            removeReferenceImageBtn.addEventListener('click', function() {
+                referenceImageInput.value = '';
+                referenceImagePreviewContainer.style.display = 'none';
+                referenceAnalysisResult.style.display = 'none';
+            });
+            
+            analyzeReferenceImageBtn.addEventListener('click', function() {
+                const apiKey = document.getElementById('apiKey').value.trim();
+                if (!apiKey) {
+                    showToast('Silakan masukkan kunci API Gemini Anda untuk menganalisis gambar', 'error');
+                    return;
+                }
+                
+                const file = referenceImageInput.files[0];
+                if (!file) {
+                    showToast('Silakan pilih gambar terlebih dahulu', 'error');
+                    return;
+                }
+                
+                analyzeImage(apiKey, file, 'reference');
+            });
+            // --- Akhir Fitur Upload Gambar Referensi untuk Gambar Tunggal ---
         });
         
         function generatePrompt() {
             const apiKey = document.getElementById('apiKey').value.trim();
             const activeTab = document.querySelector('.nav-tabs .nav-link.active').id;
+            const selectedModel = document.querySelector('.ai-model-chip.active').dataset.model;
             
             // Validation
             if (!apiKey) {
@@ -1075,17 +1421,18 @@
             }
             
             if (activeTab === 'single-image-tab') {
-                generateSingleImagePrompt(apiKey);
+                generateSingleImagePrompt(apiKey, selectedModel);
             } else if (activeTab === 'poster-tab') {
-                generatePosterPrompt(apiKey);
+                generatePosterPrompt(apiKey, selectedModel);
             }
         }
         
-        function generateSingleImagePrompt(apiKey) {
+        function generateSingleImagePrompt(apiKey, model) {
             const subject = document.getElementById('subject').value.trim();
             const negativePrompt = document.getElementById('negativePrompt').value.trim(); 
             const promptCount = document.getElementById('promptCount').value;
             const activeStyle = document.querySelector('#single-image .specialization-chip.active').dataset.style;
+            const smartEnhancement = document.getElementById('smartEnhancement').checked;
             
             // Validation
             if (!subject) {
@@ -1098,7 +1445,7 @@
             document.getElementById('resultContainer').style.display = 'none';
             
             // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
-            const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount, negativePrompt); 
+            const geminiPrompt = buildGeminiPrompt(subject, activeStyle, promptCount, negativePrompt, model, smartEnhancement); 
             
             // Call Gemini API
             callGeminiAPI(apiKey, geminiPrompt)
@@ -1114,12 +1461,13 @@
                 });
         }
         
-        function generatePosterPrompt(apiKey) {
+        function generatePosterPrompt(apiKey, model) {
             const posterProduct = document.getElementById('posterProduct').value.trim();
             const posterTheme = document.getElementById('posterTheme').value.trim();
             const posterText = document.getElementById('posterText').value.trim();
             const posterStyle = document.getElementById('posterStyle').value;
             const selectedCategory = document.querySelector('.poster-category-item.selected').dataset.category;
+            const autoTextGeneration = document.getElementById('autoTextGeneration').checked;
             
             // Validation
             if (!posterProduct) {
@@ -1137,7 +1485,7 @@
             document.getElementById('resultContainer').style.display = 'none';
             
             // Prepare the prompt for Gemini (prompt ini akan dalam Bahasa Inggris)
-            const geminiPrompt = buildPosterPrompt(posterProduct, posterTheme, posterText, posterStyle, selectedCategory);
+            const geminiPrompt = buildPosterPrompt(posterProduct, posterTheme, posterText, posterStyle, selectedCategory, model, autoTextGeneration);
             
             // Call Gemini API
             callGeminiAPI(apiKey, geminiPrompt)
@@ -1215,7 +1563,6 @@
             };
             
             return `Generate ${count} creative and impactful ${categoryDescriptions[category]} texts in ${languageNames[language]} language based on the following idea/keywords: "${idea}".
-
 Each text should be:
 - Creative, inspiring, and memorable
 - Suitable for a poster design with text as the main focus
@@ -1223,7 +1570,6 @@ Each text should be:
 - Between 10-20 words in length
 - Directly related to the provided idea/keywords
 - Unique and different from each other
-
 Format your response as a numbered list without any additional text or explanation. Each item should be on a new line starting with the number and a period (e.g., "1. First text", "2. Second text", etc.).`;
         }
         
@@ -1309,6 +1655,7 @@ Format your response as a numbered list without any additional text or explanati
             const textLanguage = document.getElementById('textLanguage').value;
             const textCategory = document.getElementById('textCategory').value;
             const activeStyleChip = document.querySelector('#text-poster .specialization-chip.active');
+            const selectedModel = document.querySelector('.ai-model-chip.active').dataset.model;
             
             // Validation
             if (!apiKey) {
@@ -1333,7 +1680,7 @@ Format your response as a numbered list without any additional text or explanati
             document.getElementById('textResultContainer').style.display = 'none';
             
             // Prepare the prompt for Gemini
-            const geminiPrompt = buildTextPromptImage(selectedText, textLanguage, activeStyle, textCategory);
+            const geminiPrompt = buildTextPromptImage(selectedText, textLanguage, activeStyle, textCategory, selectedModel);
             
             // Call Gemini API
             callGeminiAPI(apiKey, geminiPrompt)
@@ -1350,7 +1697,7 @@ Format your response as a numbered list without any additional text or explanati
         }
         
         // Fungsi untuk membangun prompt image untuk teks poster
-        function buildTextPromptImage(text, language, style, category) {
+        function buildTextPromptImage(text, language, style, category, model) {
             // Map bahasa ke nama bahasa dalam bahasa Inggris untuk prompt
             const languageNames = {
                 'indonesia': 'Indonesian',
@@ -1393,11 +1740,13 @@ Include specific details about typography, visual elements, color scheme, compos
 Ensure the generated prompt explicitly instructs the AI image generator to render the exact text "${text}" in ${languageNames[language]} language as the prominent element of the poster.
 #TASK
 Create a detailed, ready-to-use prompt for generating a professional ${categoryDescriptions[category]} poster featuring the text "${text}" in ${languageNames[language]} language. The prompt should guide an AI image generator to create a compelling poster with the text as the central focus, incorporating elements of the ${style} visual style. The prompt must ensure the exact text "${text}" is rendered prominently and clearly in ${languageNames[language]} language without translation.
+#AI MODEL
+This prompt is specifically designed for the ${model === 'imagen4' ? 'Imagen 4' : 'Gemini 2.5 Flash Image'} AI model. Ensure the prompt structure and keywords are optimized for this specific model.
 `;
         }
         
         // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
-        function buildGeminiPrompt(subject, style, count, negativePrompt) {
+        function buildGeminiPrompt(subject, style, count, negativePrompt, model, smartEnhancement) {
             let prompt = `#ROLE
     
 You are "ROEMAH PROMPT INDONESIA" an elite prompt-engineering savant who unlocks hyper-realistic, Vogue-worthy, professional magazine imagery, specifically for generating the most realistic, professional studio and magazine style creative prompts in the world that create text to AI images in tools like Midjourney, Freepik, Whisk, Google Gemini, Dreamina, Stable Diffusion, Leonardo AI and other AI Image Generator tools.
@@ -1461,16 +1810,25 @@ Output specs: cinematic 16:9, photorealistic, ultra HD, editorial finish
 Create ${count} ready-to-use prompts for the following subject: ${subject}
 Each prompt should be in the style of ${style} (use the appropriate hidden keywords and tokens for this style).
 Each prompt must include all the elements from the advanced prompt structure and use hidden keywords and tokens.
+#AI MODEL
+This prompt is specifically designed for the ${model === 'imagen4' ? 'Imagen 4' : 'Gemini 2.5 Flash Image'} AI model. Ensure the prompt structure and keywords are optimized for this specific model.
 `;
+            
             // Tambahkan bagian prompt negatif jika ada isinya
             if (negativePrompt) {
                 prompt += `\n#NEGATIVE_PROMPT\nAvoid generating the following in the image: ${negativePrompt}. Ensure no watermarks, text, blurry elements, or deformities are present.`;
             }
+            
+            // Tambahkan fitur peningkatan prompt cerdas jika diaktifkan
+            if (smartEnhancement) {
+                prompt += `\n#SMART_ENHANCEMENT\nApply advanced prompt engineering techniques to enhance the quality and realism of the generated images. Use optimal keywords, tokens, and structures specifically tailored for the ${model === 'imagen4' ? 'Imagen 4' : 'Gemini 2.5 Flash Image'} model to achieve the highest possible photorealism and detail.`;
+            }
+            
             return prompt;
         }
         
         // Fungsi ini membangun prompt untuk Gemini, harus dalam Bahasa Inggris agar Gemini merespons dalam Bahasa Inggris
-        function buildPosterPrompt(product, theme, text, style, category) {
+        function buildPosterPrompt(product, theme, text, style, category, model, autoTextGeneration) {
             // Deskripsi untuk AI, harus dalam Bahasa Inggris
             const styleDescriptions = {
                 'colorful': 'colorful and attractive with high contrast',
@@ -1521,14 +1879,16 @@ Composition: Balanced and dynamic layout, following the rule of thirds, with the
 Lighting: Professional commercial studio lighting that highlights textures and makes the product look irresistibly appealing. Use softbox lighting to eliminate harsh shadows.
 Background: A complementary background that supports the theme without distracting from the product or its name. Use subtle gradients or textures.
 Additional elements: Any supporting visual elements that enhance the theme and category (e.g., coffee beans for coffee, abstract lines for adventure). These elements should be secondary and not compete with the product.
-Text elements: Critically important: Ensure the exact original Indonesian text for the product name ("${product}"), the theme ("${theme}"), and the promotional text ("${finalPromotionalText}") is rendered directly as visible text on the poster. DO NOT TRANSLATE THESE TEXTS. If the promotional text input ("${finalPromotionalText}") is empty, then generate an appropriate, concise, and engaging Indonesian promotional text for the poster.
+Text elements: Critically important: Ensure the exact original Indonesian text for the product name ("${product}"), the theme ("${theme}"), and the promotional text ("${finalPromotionalText}") is rendered directly as visible text on the poster. DO NOT TRANSLATE THESE TEXTS. ${autoTextGeneration && !finalPromotionalText ? 'If the promotional text input is empty, then generate an appropriate, concise, and engaging Indonesian promotional text for the poster.' : ''}
 Output specs: High resolution (4K), commercial quality, suitable for social media and large-scale print advertising, ensuring text is crisp and clear. The aspect ratio should be 3:4 for a standard poster.
 #RESPONSE STYLE
 Write in dense paragraph form (no bullet points) so it's copy-friendly.
 Include specific details about the product placement, explicit typography hierarchy (product name largest, then promotional text, then theme/tagline), and visual elements.
 Ensure the generated prompt explicitly instructs the AI image generator to use the provided Indonesian text for the product name, theme, and promotional message as text on the poster without translation.
 #TASK
-Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster, ensuring the product name ("${product}") is the largest and most prominent text. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.
+Create a detailed, ready-to-use prompt for generating a professional advertising poster for "${product}" with the theme "${theme}". The prompt should guide an AI image generator to create a compelling commercial poster, ensuring the product name ("${product}") is the largest and most prominent text. The promotional text ("${finalPromotionalText}") and theme ("${theme}") should be clearly visible in a supporting role. All specified Indonesian text must appear on the poster without translation. ${autoTextGeneration && !finalPromotionalText ? 'If the promotional text input is empty, generate a suitable Indonesian promotional text for the poster.' : ''}
+#AI MODEL
+This prompt is specifically designed for the ${model === 'imagen4' ? 'Imagen 4' : 'Gemini 2.5 Flash Image'} AI model. Ensure the prompt structure and keywords are optimized for this specific model.
 `;
         }
         
@@ -1697,10 +2057,16 @@ Create a detailed, ready-to-use prompt for generating a professional advertising
         // --- Akhir Fungsi Baru untuk Saran AI ---
         
         // --- Fungsi Analisis Gambar ---
-        async function analyzeImage(apiKey, file) {
-            const analysisResult = document.getElementById('analysisResult');
-            const analysisText = document.getElementById('analysisText');
-            const analyzeImageBtn = document.getElementById('analyzeImageBtn');
+        async function analyzeImage(apiKey, file, type) {
+            const analysisResult = type === 'poster' ? 
+                document.getElementById('analysisResult') : 
+                document.getElementById('referenceAnalysisResult');
+            const analysisText = type === 'poster' ? 
+                document.getElementById('analysisText') : 
+                document.getElementById('referenceAnalysisText');
+            const analyzeImageBtn = type === 'poster' ? 
+                document.getElementById('analyzeImageBtn') : 
+                document.getElementById('analyzeReferenceImageBtn');
             
             // Tampilkan loading
             const originalText = analyzeImageBtn.innerHTML;
@@ -1764,9 +2130,13 @@ Format your response as JSON with the following structure:
                 }
                 
                 // Otomatis isi field-field dengan hasil analisis
-                document.getElementById('posterProduct').value = analysisData.suggestedProduct;
-                document.getElementById('posterTheme').value = analysisData.suggestedTheme;
-                document.getElementById('posterText').value = analysisData.suggestedText;
+                if (type === 'poster') {
+                    document.getElementById('posterProduct').value = analysisData.suggestedProduct;
+                    document.getElementById('posterTheme').value = analysisData.suggestedTheme;
+                    document.getElementById('posterText').value = analysisData.suggestedText;
+                } else if (type === 'reference') {
+                    document.getElementById('subject').value = analysisData.description;
+                }
                 
                 // Tampilkan hasil analisis
                 analysisText.innerHTML = `
@@ -1894,6 +2264,10 @@ Format your response as JSON with the following structure:
                 // Buat kotak hasil untuk setiap prompt
                 prompts.forEach((prompt, index) => {
                     const promptNumber = index + 1;
+                    const promptContainer = document.createElement('div');
+                    promptContainer.className = 'prompt-container';
+                    promptContainer.dataset.prompt = prompt.trim();
+                    
                     const resultBox = document.createElement('div');
                     resultBox.className = 'result-box';
                     resultBox.textContent = prompt.trim();
@@ -1914,14 +2288,56 @@ Format your response as JSON with the following structure:
                     resultHeader.appendChild(resultTitle);
                     resultHeader.appendChild(copyButton);
                     
-                    const promptContainer = document.createElement('div');
+                    const promptActions = document.createElement('div');
+                    promptActions.className = 'prompt-actions';
+                    
+                    const imageGenerationOptions = document.createElement('div');
+                    imageGenerationOptions.className = 'image-generation-options';
+                    
+                    const imageCountLabel = document.createElement('label');
+                    imageCountLabel.className = 'form-label mb-0 me-2';
+                    imageCountLabel.textContent = 'Jumlah Gambar:';
+                    
+                    const imageCountSelect = document.createElement('select');
+                    imageCountSelect.className = 'form-select form-select-sm';
+                    imageCountSelect.style.width = 'auto';
+                    imageCountSelect.innerHTML = `
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    `;
+                    
+                    const generateImageButton = document.createElement('button');
+                    generateImageButton.className = 'btn btn-sm btn-generate-image';
+                    generateImageButton.innerHTML = '<i class="fas fa-image me-1"></i> Generate Image';
+                    generateImageButton.addEventListener('click', () => {
+                        generateImageFromPrompt(prompt.trim(), imageCountSelect.value, promptContainer);
+                    });
+                    
+                    imageGenerationOptions.appendChild(imageCountLabel);
+                    imageGenerationOptions.appendChild(imageCountSelect);
+                    imageGenerationOptions.appendChild(generateImageButton);
+                    
+                    promptActions.appendChild(imageGenerationOptions);
+                    
                     promptContainer.appendChild(resultHeader);
                     promptContainer.appendChild(resultBox);
+                    promptContainer.appendChild(promptActions);
+                    
+                    // Container untuk hasil gambar
+                    const imageResultContainer = document.createElement('div');
+                    imageResultContainer.className = 'image-result-container';
+                    imageResultContainer.id = `image-result-${index}`;
+                    promptContainer.appendChild(imageResultContainer);
                     
                     resultContent.appendChild(promptContainer);
                 });
             } else if (type === 'poster') {
                 // Untuk poster, kita akan membuat satu kotak hasil
+                const promptContainer = document.createElement('div');
+                promptContainer.className = 'prompt-container';
+                promptContainer.dataset.prompt = response.trim();
+                
                 const resultBox = document.createElement('div');
                 resultBox.className = 'result-box';
                 resultBox.textContent = response.trim();
@@ -1942,9 +2358,47 @@ Format your response as JSON with the following structure:
                 resultHeader.appendChild(resultTitle);
                 resultHeader.appendChild(copyButton);
                 
-                const promptContainer = document.createElement('div');
+                const promptActions = document.createElement('div');
+                promptActions.className = 'prompt-actions';
+                
+                const imageGenerationOptions = document.createElement('div');
+                imageGenerationOptions.className = 'image-generation-options';
+                
+                const imageCountLabel = document.createElement('label');
+                imageCountLabel.className = 'form-label mb-0 me-2';
+                imageCountLabel.textContent = 'Jumlah Gambar:';
+                
+                const imageCountSelect = document.createElement('select');
+                imageCountSelect.className = 'form-select form-select-sm';
+                imageCountSelect.style.width = 'auto';
+                imageCountSelect.innerHTML = `
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                `;
+                
+                const generateImageButton = document.createElement('button');
+                generateImageButton.className = 'btn btn-sm btn-generate-image';
+                generateImageButton.innerHTML = '<i class="fas fa-image me-1"></i> Generate Image';
+                generateImageButton.addEventListener('click', () => {
+                    generateImageFromPrompt(response.trim(), imageCountSelect.value, promptContainer);
+                });
+                
+                imageGenerationOptions.appendChild(imageCountLabel);
+                imageGenerationOptions.appendChild(imageCountSelect);
+                imageGenerationOptions.appendChild(generateImageButton);
+                
+                promptActions.appendChild(imageGenerationOptions);
+                
                 promptContainer.appendChild(resultHeader);
                 promptContainer.appendChild(resultBox);
+                promptContainer.appendChild(promptActions);
+                
+                // Container untuk hasil gambar
+                const imageResultContainer = document.createElement('div');
+                imageResultContainer.className = 'image-result-container';
+                imageResultContainer.id = 'image-result-poster';
+                promptContainer.appendChild(imageResultContainer);
                 
                 resultContent.appendChild(promptContainer);
             }
@@ -1956,6 +2410,206 @@ Format your response as JSON with the following structure:
             resultContainer.scrollIntoView({ behavior: 'smooth' });
             
             showToast('Prompt berhasil dihasilkan!', 'success'); // Teks UI tetap Bahasa Indonesia
+        }
+        
+        // Fungsi untuk menghasilkan gambar dari prompt
+        async function generateImageFromPrompt(prompt, count, containerElement) {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const selectedModel = document.querySelector('.ai-model-chip.active').dataset.model;
+            
+            if (!apiKey) {
+                showToast('Silakan masukkan kunci API Gemini Anda untuk menghasilkan gambar', 'error');
+                return;
+            }
+            
+            // Dapatkan container untuk hasil gambar
+            const imageResultContainer = containerElement.querySelector('.image-result-container');
+            if (!imageResultContainer) {
+                showToast('Container untuk hasil gambar tidak ditemukan', 'error');
+                return;
+            }
+            
+            // Kosongkan container sebelumnya
+            imageResultContainer.innerHTML = '';
+            imageResultContainer.style.display = 'block';
+            
+            // Tampilkan header
+            const imageResultHeader = document.createElement('div');
+            imageResultHeader.className = 'image-result-header';
+            
+            const imageResultTitle = document.createElement('div');
+            imageResultTitle.className = 'image-result-title';
+            imageResultTitle.innerHTML = `<i class="fas fa-images me-2"></i> Hasil Generate Image (${count} gambar)`;
+            
+            imageResultHeader.appendChild(imageResultTitle);
+            imageResultContainer.appendChild(imageResultHeader);
+            
+            // Buat grid untuk gambar
+            const imageGrid = document.createElement('div');
+            imageGrid.className = 'image-grid';
+            imageResultContainer.appendChild(imageGrid);
+            
+            // Buat placeholder untuk setiap gambar
+            for (let i = 0; i < count; i++) {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                
+                const imageLoading = document.createElement('div');
+                imageLoading.className = 'image-loading';
+                imageLoading.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <p class="mt-2">Menghasilkan gambar...</p>
+                `;
+                
+                imageItem.appendChild(imageLoading);
+                imageGrid.appendChild(imageItem);
+                
+                // Generate gambar secara asinkron
+                generateSingleImage(apiKey, prompt, selectedModel, imageItem, i);
+            }
+            
+            // Gulir ke hasil
+            imageResultContainer.scrollIntoView({ behavior: 'smooth' });
+            
+            showToast(`Memulai generate ${count} gambar...`, 'info');
+        }
+        
+        // Fungsi untuk menghasilkan satu gambar
+        async function generateSingleImage(apiKey, prompt, model, containerElement, index) {
+            try {
+                // Untuk Gemini 2.5 Flash Image, kita bisa langsung menggunakan API generateContent
+                // dengan prompt yang sudah dioptimalkan untuk generate gambar
+                
+                // Hapus indikator loading
+                const imageLoading = containerElement.querySelector('.image-loading');
+                if (imageLoading) {
+                    imageLoading.remove();
+                }
+                
+                // Tampilkan loading baru dengan pesan yang lebih spesifik
+                const newImageLoading = document.createElement('div');
+                newImageLoading.className = 'image-loading';
+                newImageLoading.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <p class="mt-2">Memproses gambar ${index + 1}...</p>
+                `;
+                containerElement.appendChild(newImageLoading);
+                
+                // Buat prompt yang dioptimalkan untuk generate gambar
+                const imagePrompt = `Generate a high-quality, photorealistic image based on the following description: "${prompt}". 
+                
+                Instructions:
+                1. Create a detailed, visually stunning image that matches the description exactly
+                2. Use professional photography techniques with proper lighting, composition, and color grading
+                3. Ensure the image is high resolution (4K quality)
+                4. Make it look like it was taken by a professional photographer
+                5. Do not include any text, watermarks, or signatures in the image
+                6. Focus on creating a visually appealing image that captures the essence of the description
+                
+                Please generate this image and provide it as a base64 encoded image data.`;
+                
+                // Panggil API Gemini untuk generate gambar
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: imagePrompt
+                            }]
+                        }],
+                        generationConfig: {
+                            responseModalities: ["TEXT", "IMAGE"]
+                        }
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error.message || 'Failed to generate image');
+                }
+                
+                const data = await response.json();
+                
+                // Hapus loading indicator
+                if (newImageLoading) {
+                    newImageLoading.remove();
+                }
+                
+                // Periksa apakah ada gambar dalam respons
+                let imageUrl = null;
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+                    for (const part of data.candidates[0].content.parts) {
+                        if (part.inline_data && part.inline_data.mime_type && part.inline_data.mime_type.startsWith('image/')) {
+                            // Dapatkan base64 data dari respons
+                            const base64Data = part.inline_data.data;
+                            const mimeType = part.inline_data.mime_type;
+                            imageUrl = `data:${mimeType};base64,${base64Data}`;
+                            break;
+                        }
+                    }
+                }
+                
+                if (imageUrl) {
+                    // Buat elemen gambar
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.alt = `Generated Image ${index + 1}`;
+                    
+                    // Buat overlay untuk aksi download
+                    const imageActionsOverlay = document.createElement('div');
+                    imageActionsOverlay.className = 'image-actions-overlay';
+                    
+                    const downloadButton = document.createElement('button');
+                    downloadButton.className = 'btn btn-sm btn-download-image';
+                    downloadButton.innerHTML = '<i class="fas fa-download"></i>';
+                    downloadButton.addEventListener('click', () => {
+                        showToast(`Mengunduh gambar ${index + 1}...`, 'info');
+                        
+                        // Buat link untuk download
+                        const link = document.createElement('a');
+                        link.href = imageUrl;
+                        link.download = `generated-image-${index + 1}.jpg`;
+                        link.click();
+                    });
+                    
+                    imageActionsOverlay.appendChild(downloadButton);
+                    
+                    containerElement.appendChild(img);
+                    containerElement.appendChild(imageActionsOverlay);
+                    
+                    // Tampilkan notifikasi untuk gambar yang berhasil dihasilkan
+                    showToast(`Gambar ${index + 1} berhasil dihasilkan!`, 'success');
+                } else {
+                    // Jika tidak ada gambar dalam respons, tampilkan pesan error
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.textContent = 'Tidak dapat menghasilkan gambar. Silakan coba lagi dengan prompt yang berbeda.';
+                    containerElement.appendChild(errorMessage);
+                    
+                    showToast(`Gagal menghasilkan gambar ${index + 1}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error generating image:', error);
+                
+                // Hapus indikator loading
+                const imageLoading = containerElement.querySelector('.image-loading');
+                if (imageLoading) {
+                    imageLoading.remove();
+                }
+                
+                // Tampilkan pesan error
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = `Gagal menghasilkan gambar ${index + 1}: ${error.message}`;
+                containerElement.appendChild(errorMessage);
+                
+                showToast(`Gagal menghasilkan gambar ${index + 1}`, 'error');
+            }
         }
         
         // Nama gaya umumnya adalah istilah Bahasa Inggris, jadi ini bisa tetap seperti adanya
